@@ -1,0 +1,20 @@
+{
+  "name": "moonkit-test",
+  "version": "1.0.0",
+  "description": "CSS and JavaScript library based on htmon for customizable components",
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Andrés F. Ospina A. <aospinadev@gmail.com> (https://github.com/Androspi)",
+  "license": "ISC",
+  "dependencies": {
+    "htmon-test": "^1.0.0",
+    "rxjs": "^7.4.0"
+  }
+}
