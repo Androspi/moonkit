@@ -1,6 +1,6 @@
+import { ContainerTemplate, ContainerTemplateContext, ElementTemplateContext, IntersectionTypeList, TemplateEvent, TemplateOperators } from 'htmon-test';
 import { Subject } from 'rxjs';
 
-import { ContainerTemplate, ContainerTemplateContext, ElementTemplateContext, IntersectionTypeList, TemplateEvent, TemplateOperators } from './template.class';
 import { Dropdown, DropdownArea, DropdownOptions } from './dropdown';
 
 export interface ListArea extends DropdownArea {

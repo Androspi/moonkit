@@ -1,4 +1,5 @@
-import { ContainerTemplateContext, ElementTemplateContext, IntersectionTypeList, TemplateEvent, TemplateOperators } from './template.class';
+import { ContainerTemplateContext, ElementTemplateContext, IntersectionTypeList, TemplateEvent, TemplateOperators } from 'htmon-test';
+
 import { List, ListArea, ListOptions } from './list';
 
 export interface AutocompleteArea extends ListArea {

@@ -7,14 +7,21 @@
   "files": [
     "/dist"
   ],
+  "repository": {
+    "url": "https://github.com/Androspi/moonkit.git",
+    "type": "git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "Andrés F. Ospina A. <aospinadev@gmail.com> (https://github.com/Androspi)",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "htmon-test": "^1.0.0",
+    "htmon-test": "^1.0.4",
     "rxjs": "^7.4.0"
+  },
+  "devDependencies": {
+    "typescript": "~4.0.3"
   }
 }

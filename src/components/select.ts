@@ -1,8 +1,8 @@
+import { ContainerTemplate, ContainerTemplateContext, ElementTemplate, ElementTemplateContext, IntersectionTypeList, TemplateOperators } from 'htmon-test';
 import { Subject } from 'rxjs';
 
-import { ContainerTemplate, ContainerTemplateContext, ElementTemplate, ElementTemplateContext, IntersectionTypeList, TemplateOperators } from './template.class';
-import { ListOptions, ListItemSelectedEvent, List } from './list.class';
-import { Autocomplete, AutocompleteOptions } from './autocomplete.class';
+import { Autocomplete, AutocompleteOptions } from './autocomplete';
+import { ListOptions, ListItemSelectedEvent, List } from './list';
 
 export interface SelectArea {
   title: Partial<Omit<IntersectionTypeList['context'], 'rows' | 'type' | 'tag' | 'name'>>;

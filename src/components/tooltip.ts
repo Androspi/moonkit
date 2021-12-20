@@ -1,6 +1,6 @@
+import { ContainerTemplate, ContainerTemplateContext, TemplateOperators } from 'htmon-test';
 import { Subscription } from 'rxjs';
 
-import { ContainerTemplate, ContainerTemplateContext, TemplateOperators } from './template.class';
 
 export interface TooltipOptions {
   direction: 'bottom' | 'right' | 'left' | 'top';

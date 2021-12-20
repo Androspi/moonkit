@@ -1,4 +1,4 @@
-import { TemplateFamily, TemplateOptions, ContainerTemplate, ContainerTemplateContext, TemplateOperators, TemplateProperties, IntersectionTypeList } from './template.class';
+import { TemplateFamily, TemplateOptions, ContainerTemplate, ContainerTemplateContext, TemplateOperators, TemplateProperties, IntersectionTypeList } from 'htmon-test';
 
 export interface DropdownArea {
   dropdown: Partial<Omit<ContainerTemplateContext, 'rows' | 'type' | 'name'>>;
