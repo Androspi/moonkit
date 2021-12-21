@@ -1,0 +1,119 @@
+@use "../mixins";
+@use "../theme";
+
+.primary-list {
+  background: theme.get-theme-value(theme, senary, background);
+  padding-inline-start: 0;
+  list-style: none;
+  @each $var in (left right top bottom) {
+    &.#{$var}-border {
+      border-#{$var}-width: 0.06rem;
+      border-#{$var}-style: solid;
+    }
+  }
+  &.shadowed-list {
+    box-shadow: 0.06rem 0.06rem 0.18rem 0 theme.get-theme-value(theme, primary, background),
+      -0.06rem 0 0.18rem 0 theme.get-theme-value(theme, primary, background);
+    -webkit-box-shadow: 0.06rem 0.06rem 0.18rem 0 theme.get-theme-value(theme, primary, background),
+      -0.06rem 0 0.18rem 0 theme.get-theme-value(theme, primary, background);
+    -moz-box-shadow: 0.06rem 0.06rem 0.18rem 0 theme.get-theme-value(theme, primary, background),
+      -0.06rem 0 0.18rem 0 theme.get-theme-value(theme, primary, background);
+  }
+  &.selectable-list {
+    & .list-item,
+    & li {
+      &:not(.not-selectable-list-item) {
+        cursor: pointer;
+        &:hover,
+        &:focus,
+        &:active,
+        &.item-active {
+          background: theme.get-theme-value(theme, secondary, background);
+          outline: none;
+        }
+      }
+    }
+  }
+  & li,
+  & .list-item {
+    color: theme.get-theme-value(theme, senary, color);
+    transition: all 0.5s ease;
+    background: transparent;
+    font-weight: lighter;
+    line-height: 1.2em;
+    font-size: 0.7rem;
+    padding: 0.66rem;
+  }
+  & ul,
+  & .group-item {
+    color: theme.get-theme-value(theme, primary, color);
+    background: transparent;
+    line-height: 1.2em;
+    font-size: 0.73rem;
+    font-weight: 700;
+    padding: 0.66rem;
+    & ~ .list-item,
+    & .list-item {
+      padding: 0.66rem 1.32rem;
+    }
+  }
+}
+
+.secondary-list {
+  margin-block-start: 0.5em;
+  padding-inline-start: 0;
+  margin-block-end: 0.5em;
+  list-style: none;
+  display: flex;
+  &.separated-list {
+    & .list-item,
+    & button,
+    & li {
+      margin: 0.15rem;
+    }
+  }
+  &.selectable-list {
+    & .list-item,
+    & button,
+    & li {
+      cursor: pointer;
+      &:hover,
+      &:focus,
+      &:active,
+      &.item-active {
+        background: theme.get-theme-value(theme, secondary, background);
+        outline: none;
+      }
+    }
+  }
+  &:not(.nowrap-list) {
+    flex-wrap: wrap;
+    & .list-item,
+    & button,
+    & li {
+      flex: 1 1 auto;
+    }
+  }
+  &.nowrap-list {
+    flex-wrap: nowrap;
+    overflow: auto;
+    & .list-item,
+    & button,
+    & li {
+      align-items: center;
+      display: flex;
+    }
+  }
+  & .list-item,
+  & button,
+  & li {
+    background: theme.get-theme-value(theme, tertiary, background);
+    color: theme.get-theme-value(theme, senary, color);
+    transition: all 0.5s ease;
+    font-weight: lighter;
+    line-height: 1.2em;
+    text-align: center;
+    font-size: 0.6rem;
+    padding: 0.33rem;
+  }
+}

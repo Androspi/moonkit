@@ -1,0 +1,234 @@
+@use "../viewport";
+@use 'sass:math';
+
+$negativeColSpace: var(--negativeGutter, -0.75rem) !default;
+$colSpace: var(--gutter, 0.75rem) !default;
+$orderLength: 12 !default;
+$colLength: 12 !default;
+$rowLength: 12 !default;
+$rowName: row !default;
+$colName: col !default;
+
+.#{$colName} {
+  & > .#{$rowName} {
+    &:not(.no-#{$rowName}-margin) {
+      margin-left: #{$negativeColSpace};
+      margin-right: #{$negativeColSpace};
+    }
+  }
+}
+
+.#{$rowName} {
+  box-sizing: border-box;
+  margin-right: auto;
+  margin-left: auto;
+  line-height: 0;
+  & > * {
+    line-height: normal;
+  }
+}
+
+.#{$rowName}:not(.grid-#{$rowName}) {
+  &.flex-#{$rowName} {
+    flex-wrap: wrap;
+    display: flex;
+  }
+  &.flex-#{$rowName}-column {
+    flex-direction: column;
+    display: flex;
+  }
+  &.inline-flex-#{$rowName} {
+    display: inline-flex;
+    flex-wrap: wrap;
+  }
+  & .#{$colName} {
+    box-sizing: border-box;
+    &.flex-#{$colName} {
+      display: inline-flex;
+    }
+    &:not(.flex-#{$colName}) {
+      display: inline-block;
+    }
+    &:not(.no-col-align) {
+      vertical-align: top;
+    }
+    &:not(.no-#{$colName}-padding) {
+      padding-right: $colSpace;
+      padding-left: $colSpace;
+    }
+    &:not(.no-#{$colName}-padding)::after,
+    &:not(.no-#{$colName}-padding):before {
+      max-width: calc(100% - (#{$colSpace} * 2));
+    }
+    $vp: (
+      null: s,
+      tablet: m,
+      desktop: l,
+    );
+    @each $size, $key in $vp {
+      @include viewport.use-viewport($size, null) {
+        @for $val from 0 to $colLength {
+          &.#{$key+($val + 1)} {
+            width: (($val + 1) * math.div(100%, $colLength));
+          }
+        }
+      }
+    }
+    @each $size, $key in $vp {
+      @include viewport.use-viewport($size, null) {
+        &.#{"pull-" + $key + "0"} {
+          margin-right: 0;
+        }
+        &.#{"offset-" + $key + "0"} {
+          margin-left: 0;
+        }
+        @for $val from 0 to $colLength {
+          &.#{"pull-" + $key+($val + 1)} {
+            margin-right: (($val + 1) * math.div(100%, $colLength));
+          }
+          &.#{"offset-" + $key+($val + 1)} {
+            margin-left: (($val + 1) * math.div(100%, $colLength));
+          }
+        }
+      }
+    }
+    $vp0: (
+      phone: s,
+      tablet: m,
+      desktop: l,
+    );
+    @each $size, $key in $vp0 {
+      @include viewport.use-viewport($size, viewport.get-property-value($size, "max-width")) {
+        &.#{$key}0 {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.#{$rowName}.grid-#{$rowName} {
+  grid-template-columns: repeat($colLength, minmax(0, 1fr));
+  grid-template-rows: auto;
+  grid-gap: #{$colSpace};
+  display: grid;
+  &[style*="--grid-row-height"] {
+    grid-auto-rows: min(var(--grid-row-height, 0));
+  }
+  & .#{$colName} {
+    box-sizing: border-box;
+    $vp: (
+      null: s,
+      tablet: m,
+      desktop: l,
+    );
+    @each $size, $key in $vp {
+      @include viewport.use-viewport($size, null) {
+        @for $val from 0 to $orderLength {
+          &.#{$key + "-order-"+($val + 1)} {
+            order: $val + 1;
+          }
+        }
+        @for $val from 0 to $colLength {
+          &.#{$colName}-#{$key+($val + 1)} {
+            grid-column-end: span ($val + 1);
+            width: auto;
+          }
+          @for $endVal from 0 to $colLength {
+            &.#{$colName}-#{$key+($val + 1)}-#{$endVal + 1} {
+              grid-column: #{($val + 1) + "/" ($val + 1 + $endVal + 1)};
+            }
+          }
+        }
+        @for $val from 0 to $rowLength {
+          &.#{$rowName}-#{$key+($val + 1)} {
+            grid-row-end: span ($val + 1);
+          }
+          @for $endVal from 0 to $rowLength {
+            &.#{$rowName}-#{$key+($val + 1)}-#{$endVal + 1} {
+              grid-row: #{($val + 1) + "/" + ($val + 1 + $endVal + 1)};
+            }
+          }
+        }
+      }
+    }
+    @each $size, $key in $vp {
+      @include viewport.use-viewport($size, null) {
+        @for $val from 0 to $colLength {
+          &.#{"offset-" + #{$colName} + "-" + $key+($val + 1)} {
+            grid-column-start: #{($val + 1)};
+          }
+        }
+        @for $val from 0 to $rowLength {
+          &.#{"offset-" + #{$rowName} + "-" + $key+($val + 1)} {
+            grid-row-start: #{($val + 1)};
+          }
+        }
+      }
+    }
+    $vp0: (
+      phone: s,
+      tablet: m,
+      desktop: l,
+    );
+    @each $size, $key in $vp0 {
+      @include viewport.use-viewport($size, viewport.get-property-value($size, "max-width")) {
+        &.#{$colName + "-" + $key + "0"} {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.#{$colName}-padding {
+  &-left,
+  & {
+    padding-left: $colSpace;
+  }
+  &-right,
+  & {
+    padding-right: $colSpace;
+  }
+}
+
+.highest-#{$colName}-padding {
+  &-left,
+  & {
+    padding-left: calc(#{$colSpace} * 1.5);
+  }
+  &-right,
+  & {
+    padding-right: calc(#{$colSpace} * 1.5);
+  }
+}
+
+.#{$rowName}-margin {
+  &-left,
+  & {
+    margin-left: $negativeColSpace;
+  }
+  &-right,
+  & {
+    margin-right: $negativeColSpace;
+  }
+}
+
+.#{$colName}-margin {
+  &-left,
+  & {
+    margin-left: $colSpace;
+  }
+  &-right,
+  & {
+    margin-right: $colSpace;
+  }
+  &-left-important,
+  &-important {
+    margin-left: $colSpace !important;
+  }
+  &-right-important,
+  &-important {
+    margin-right: $colSpace !important;
+  }
+}

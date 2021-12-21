@@ -1,0 +1,105 @@
+@use "./viewport";
+
+/// Replace `$search` with `$replace` in `$string`
+/// @author Hugo Giraudel
+/// @param {String} $string - Initial string
+/// @param {String} $search - Substring to replace
+/// @param {String} $replace ('') - New value
+/// @return {String} - Updated string
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace +
+      str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+@mixin generate-styles($selector, $property: $selector, $measure: px, $from: 1, $to: 20) {
+  @for $value from $from to ($to + 1) {
+    .#{$selector}-#{$value}-#{$measure} {
+      #{$property}: viewport.get-measure($value, $measure);
+      &-important {
+        #{$property}: viewport.get-measure($value, $measure) !important;
+      }
+    }
+  }
+}
+
+@mixin extend-styles($selector, $measure: px, $from: 1, $to: 20, $classes...) {
+  @for $value from $from to ($to + 1) {
+    .#{$selector}-#{$value}-#{$measure} {
+      @each $val in $classes {
+        @extend .#{$val + "-" + $value + "-" + $measure};
+        &-important {
+          @extend .#{$val + "-" + $value + "-" + $measure}-important;
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-compatible-properties($prop, $value, $prefixes...) {
+  @each $pre in $prefixes {
+    @if ($pre == webkit) {
+      -webkit-#{$prop}: $value;
+    }
+  }
+  #{$prop}: $value;
+}
+
+@mixin use-keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content (-webkit-);
+  }
+  @-moz-keyframes #{$name} {
+    @content (-moz-);
+  }
+  @-ms-keyframes #{$name} {
+    @content (-ms-);
+  }
+  @-o-keyframes #{$name} {
+    @content (-o-);
+  }
+  @keyframes #{$name} {
+    @content ("");
+  }
+}
+
+@mixin use-keyframes-with-compatible-properties($prefix, $prop, $value) {
+  #{$prefix + $prop}: $value;
+}
+
+@mixin custom-class($property, $value, $valueAlias) {
+  .#{$property}-#{$valueAlias} {
+    #{$property}: $value;
+    &-important {
+      #{$property}: $value !important;
+    }
+  }
+}
+
+@mixin make-class($property, $values...) {
+  @each $value in $values {
+    .#{$property + "-" + $value} {
+      #{$property}: #{$value};
+      &-important {
+        #{$property}: #{$value} !important;
+      }
+    }
+  }
+}
+
+@mixin make-important($selector, $property, $value, $selectors: ()) {
+  @each $selectorInput in join((""), $selectors) {
+    $selectorKey: str-replace(str-replace($selectorInput, "::", ":"), ":", "-");
+    #{$selector + $selectorKey + $selectorInput} {
+      #{$property}: $value;
+      &#{"-important" + $selectorInput} {
+        #{$property}: $value !important;
+      }
+    }
+  }
+}

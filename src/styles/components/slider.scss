@@ -1,0 +1,84 @@
+@use "./animations";
+@use "../mixins";
+@use "../theme";
+
+.primary-slider {
+  transition: all 0.5s ease;
+  position: relative;
+  min-height: 100%;
+  overflow: hidden;
+  width: 100%;
+  & .slider-left-control {
+    color: theme.get-theme-value(theme, quaternary, color);
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    cursor: pointer;
+    display: flex;
+    width: 3.5rem;
+    height: 100%;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    & * {
+      font-size: 1.25rem;
+    }
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+      color: #ffffff;
+    }
+  }
+
+  & .slider-right-control {
+    color: theme.get-theme-value(theme, quaternary, color);
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    cursor: pointer;
+    display: flex;
+    width: 3.5rem;
+    height: 100%;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    & * {
+      font-size: 1.25rem;
+    }
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+      color: #ffffff;
+    }
+  }
+
+  & .slider-bottom-control {
+    color: theme.get-theme-value(theme, quaternary, color);
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    cursor: pointer;
+    bottom: 0.3rem;
+    display: flex;
+    width: 100%;
+    z-index: 1;
+    left: 0;
+    & * {
+      font-size: 0.75rem;
+      margin: 0 0.125rem;
+    }
+  }
+
+  & .slider-content {
+    min-height: 100%;
+    width: 100%;
+    & .slide-right {
+      @extend .slide-in-right;
+    }
+    & .slide-left {
+      @extend .enter-right;
+    }
+  }
+
+  & .iterable-element {
+    height: 100%;
+  }
+}

@@ -28,23 +28,9 @@ export interface MarqueeBehaviorOptions {
 // Tooltip
 export interface TooltipBehaviorProperties { tooltipInstance: Tooltip; }
 export type TooltipBehaviorOptions = Partial<TooltipOptions>;
-// Loader
-export interface LoaderBehaviorProperties {
-  loader: (isLoading: boolean, value: number) => void;
-  increase: () => void;
-  isLoading: boolean;
-}
-export interface LoaderBehaviorOptions {
-  childrenContext?: ContainerTemplateProperties['rows'][number];
-  destroy: (ref: any) => void;
-}
 // Modal
 export type ModalBehaviorOptions = Partial<ModalOptions & ModalProperties>;
 export interface ModalBehaviorProperties { modalInstance: Modal; }
-// Video
-export interface VideoBehaviorOptions { updateDuration?: boolean; }
-// Vimeo
-export type VimeoBehaviorOptions = {};
 // List
 export interface ListBehaviorProperties { listInstance: List; }
 export type ListBehaviorOptions = Partial<ListOptions>;
@@ -59,11 +45,8 @@ declare global {
       dropdown: InstanceType<TemplateBehaviorClass<BehaviorOptionList['dropdown']>> & DropdownBehaviorProperties;
       tooltip: InstanceType<TemplateBehaviorClass<BehaviorOptionList['tooltip']>> & TooltipBehaviorProperties;
       marquee: InstanceType<TemplateBehaviorClass<BehaviorOptionList['marquee']>> & MarqueeBehaviorProperties;
-      loader: InstanceType<TemplateBehaviorClass<BehaviorOptionList['loader']>> & LoaderBehaviorProperties;
       modal: InstanceType<TemplateBehaviorClass<BehaviorOptionList['modal']>> & ModalBehaviorProperties;
       list: InstanceType<TemplateBehaviorClass<BehaviorOptionList['list']>> & ListBehaviorProperties;
-      vimeo: InstanceType<TemplateBehaviorClass<BehaviorOptionList['vimeo']>>;
-      video: InstanceType<TemplateBehaviorClass<BehaviorOptionList['video']>>;
     }
 
     interface BehaviorOptionList {
@@ -72,9 +55,6 @@ declare global {
       dropdown: DropdownBehaviorOptions;
       tooltip: TooltipBehaviorOptions;
       marquee: MarqueeBehaviorOptions;
-      loader: LoaderBehaviorOptions;
-      vimeo: VimeoBehaviorOptions;
-      video: VideoBehaviorOptions;
       modal: ModalBehaviorOptions;
       list: ListBehaviorOptions;
     }

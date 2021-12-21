@@ -1,0 +1,33 @@
+@use "../theme";
+
+.primary-tab {
+    & .tab-header {
+        font-size: 0.73rem;
+        color: theme.get-theme-value(theme, quaternary, color);
+    }
+    &:not(.mdc-primary-tab) {
+        & .tab-header.tab-header-active {
+            background: theme.get-theme-value(theme, secondary, background);
+        }
+    }
+}
+
+.mdc-primary-tab {
+    & .mdc-tab {
+        transition: all 0.5s ease;
+    }
+    & .mdc-tab__ripple::before,
+    & .mdc-tab__ripple::after {
+        background: theme.get-theme-value(theme, secondary, background);
+    }
+
+    & .mdc-tab-indicator .mdc-tab-indicator__content--underline {
+        border-color: theme.get-theme-value(palette, primary, background);
+    }
+
+    & .mdc-tab--active,
+    & .mdc-tab:hover,
+    & .mdc-tab:focus {
+        background: theme.get-theme-value(theme, secondary, background);
+    }
+}

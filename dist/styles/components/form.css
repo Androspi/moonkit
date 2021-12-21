@@ -1,0 +1,43 @@
+.primary-input {
+  background: var(--septenary-background-theme, #131313);
+  border-color: var(--septenary-border-theme, #292929);
+  color: var(--septenary-color-theme, #d1d1d1);
+  border-radius: 0.26rem;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.86rem;
+  border-width: 0;
+  outline: none;
+}
+
+.primary-form-field {
+  border: 0.06rem solid var(--septenary-border-theme, #292929);
+  background: var(--septenary-background-theme, #131313);
+  padding: 0.447rem 0.5rem;
+  border-radius: 0.26rem;
+  position: relative;
+  display: flex;
+}
+.primary-form-field .primary-input {
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  width: 100%;
+}
+.primary-form-field .input-suffix, .primary-form-field .input-prefix {
+  color: var(--septenary-color-theme, #d1d1d1);
+  justify-content: center;
+  padding: 0.2em 0.25rem;
+  align-items: center;
+  font-size: 0.86rem;
+  cursor: pointer;
+  display: flex;
+}
+.primary-form-field .input-suffix > *, .primary-form-field .input-prefix > * {
+  font-size: 1.4em;
+}
+.primary-form-field.invalid-form-field {
+  border: 0.12rem solid var(--typographyDanger-background-status, #ff2c4b);
+}
+.primary-form-field.invalid-form-field .primary-input::placeholder, .primary-form-field.invalid-form-field .primary-input, .primary-form-field.invalid-form-field .input-prefix {
+  color: var(--typographyDanger-background-status, #ff2c4b);
+}

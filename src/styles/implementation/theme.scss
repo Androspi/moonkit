@@ -1,0 +1,13 @@
+@use "../theme";
+
+@each $themeKey, $themeValue in theme.$themes {
+  html[theme="#{$themeKey}"] {
+    @each $property, $propertyValue in $themeValue {
+      @each $type, $typeValue in $propertyValue {
+        @each $style, $styleValue in $typeValue {
+          --#{($type + "-" + $style + "-" + $property)}: #{$styleValue};
+        }
+      }
+    }
+  }
+}

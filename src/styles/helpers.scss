@@ -1,0 +1,144 @@
+@use "./mixins";
+// margin, padding
+@each $value in (auto, 0) {
+  @each $selector in (margin, padding) {
+    @each $property in (bottom, right, left, top) {
+      @include mixins.make-class($selector + "-" + $property, #{$value});
+    }
+    .#{$selector}-horizontal-#{$value},
+    .#{$selector}-#{$value} {
+      @extend .#{$selector}-right-#{$value};
+      @extend .#{$selector}-left-#{$value};
+    }
+    .#{$selector}-vertical-#{$value},
+    .#{$selector}-#{$value} {
+      @extend .#{$selector}-bottom-#{$value};
+      @extend .#{$selector}-top-#{$value};
+    }
+    .#{$selector}-horizontal-#{$value}-important,
+    .#{$selector}-#{$value}-important {
+      @extend .#{$selector}-right-#{$value}-important;
+      @extend .#{$selector}-left-#{$value}-important;
+    }
+    .#{$selector}-vertical-#{$value}-important,
+    .#{$selector}-#{$value}-important {
+      @extend .#{$selector}-bottom-#{$value}-important;
+      @extend .#{$selector}-top-#{$value}-important;
+    }
+  }
+}
+// width, height in %
+@each $property in (width, height) {
+  @each $prefix in (min-, "", max-) {
+    @each $values in (0, 25, 50, 75, 100) {
+      .#{$prefix + $property + "-" + $values} {
+        #{$prefix + $property}: #{$values + "%"};
+      }
+    }
+  }
+}
+// border direction
+@each $property in (bottom, right, left, top) {
+  .border-#{$property} {
+    border-#{$property}-width: 0.06rem;
+    border-#{$property}-style: solid;
+    &-important {
+      border-#{$property}-width: 0.06rem !important;
+      border-#{$property}-style: solid !important;
+    }
+  }
+  @each $style in (solid, dotted, dashed) {
+    .border-#{$property}-#{$style} {
+      border-#{$property}-style: #{$style};
+      border-#{$property}-width: 0.06rem;
+      &-important {
+        border-#{$property}-style: #{$style} !important;
+        border-#{$property}-width: 0.06rem !important;
+      }
+    }
+  }
+}
+// border-style
+@each $style in (solid, dotted, dashed) {
+  .border-#{$style} {
+    border-style: #{$style};
+    border-width: 0.06rem;
+    &-important {
+      border-style: #{$style} !important;
+      border-width: 0.06rem !important;
+    }
+  }
+}
+// text-align
+@include mixins.make-class(text-align, center, right, left, justify);
+// font-size
+@include mixins.custom-class(font-size, 0.55em, xx-small);
+@include mixins.custom-class(font-size, 1.5em, x-large);
+@include mixins.custom-class(font-size, 1.8em, xx-large);
+@include mixins.make-class(font-size, smaller, inherit);
+// position
+@include mixins.custom-class(position, -webkit-sticky, sticky);
+@include mixins.make-class(position, absolute, relative, fixed, sticky);
+// float
+@include mixins.make-class(float, left, right);
+// cursor
+@include mixins.make-class(cursor, pointer);
+// object-fit
+@include mixins.make-class(object-fit, fill);
+// overflow
+@include mixins.make-class(overflow-y, hidden, auto, scroll);
+@include mixins.make-class(overflow-x, hidden, auto, scroll);
+@include mixins.make-class(overflow, hidden, auto, scroll);
+// flex-direction
+@include mixins.make-class(flex-direction, column, row, row-reverse);
+// z-index
+@include mixins.make-class(z-index, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+// display
+@include mixins.make-class(display, flex, inline, inline-block, inline-flex, block, none, grid, inline-grid);
+// vertical-align
+@include mixins.make-class(vertical-align, middle, sub, super, bottom);
+// border-color
+@include mixins.custom-class(border-color, currentColor, currentcolor);
+@include mixins.make-class(border-color, transparent);
+// white-space
+@include mixins.make-class(white-space, nowrap, normal);
+// text-transform
+@include mixins.make-class(text-transform, capitalize, uppercase, lowercase);
+// word-break
+@include mixins.make-class(word-break, break-word);
+// font-weight
+@include mixins.make-class(font-weight, lighter, 400, 500, 700, 900);
+// list-style-type
+@include mixins.make-class(list-style-type, decimal);
+// list-style-position
+@include mixins.make-class(list-style-position, inside);
+// line-height
+@include mixins.make-class(line-height, 1);
+// text-decoration
+@include mixins.make-class(text-decoration, underline, none);
+// justify-content
+@include mixins.make-class(justify-content, flex-start, flex-end, center, space-around, space-between);
+// align-items
+@include mixins.make-class(align-items, center, flex-end);
+// align-self
+@include mixins.make-class(align-self, center, flex-end, flex-start);
+// margin
+@include mixins.make-class(margin, auto);
+// flex-wrap
+@include mixins.make-class(flex-wrap, wrap);
+// pointer-events
+@include mixins.make-class(pointer-events, none);
+// background-attachment
+@include mixins.make-class(background-attachment, fixed);
+// color
+@include mixins.custom-class(color, currentColor, currentcolor);
+@include mixins.make-class(color, inherit);
+// bottom, right, left, top
+@include mixins.make-class(bottom, 0);
+@include mixins.make-class(right, 0);
+@include mixins.make-class(left, 0);
+@include mixins.make-class(top, 0);
+// border-radius
+@include mixins.custom-class(border-radius, 50%, 50);
+// width
+@include mixins.make-class(width, auto);

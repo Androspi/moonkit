@@ -1,0 +1,11 @@
+@use "../viewport";
+
+:root {
+  @each $key, $value in viewport.$viewport {
+    @include viewport.use-viewport($key) {
+      @each $key3, $value3 in map-get($value, "measure") {
+        --#{"viewport-"+$key3+"-value"}: #{$value3};
+      }
+    }
+  }
+}

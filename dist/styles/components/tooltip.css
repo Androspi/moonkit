@@ -1,0 +1,40 @@
+[tooltip-trigger] {
+  cursor: pointer;
+}
+
+.primary-tooltip {
+  border: 0.0666666667rem solid var(--septenary-border-theme, #292929);
+  background: var(--senary-background-theme, #0d0d0d);
+  color: var(--septenary-color-theme, #d1d1d1);
+  border-radius: 0.2666666667rem;
+  font-size: 0.8rem;
+  padding: 0.4rem;
+  position: absolute;
+  z-index: 6;
+}
+.primary-tooltip[tooltip-border-direction]::after {
+  border-width: 0.5rem;
+  border-style: solid;
+  position: absolute;
+  content: "";
+}
+.primary-tooltip[tooltip-border-direction=bottom]::after {
+  border-color: transparent transparent var(--septenary-border-theme, #292929) transparent;
+  left: calc(50% - 0.5rem);
+  bottom: 100%;
+}
+.primary-tooltip[tooltip-border-direction=right]::after {
+  border-color: transparent var(--septenary-border-theme, #292929) transparent transparent;
+  bottom: calc(50% - 0.5rem);
+  right: 100%;
+}
+.primary-tooltip[tooltip-border-direction=left]::after {
+  border-color: transparent transparent transparent var(--septenary-border-theme, #292929);
+  bottom: calc(50% - 0.5rem);
+  left: 100%;
+}
+.primary-tooltip[tooltip-border-direction=top]::after {
+  border-color: var(--septenary-border-theme, #292929) transparent transparent transparent;
+  left: calc(50% - 0.5rem);
+  top: 100%;
+}

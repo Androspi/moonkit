@@ -1,0 +1,129 @@
+@use "../viewport";
+@use "../theme";
+
+.primary-header {
+    &.highest-padding {
+        padding: calc(var(--gutter, 0.5rem) * 8);
+    }
+    &:not(.highest-padding) {
+        padding: calc(var(--gutter, 0.5rem) * 6);
+    }
+}
+
+.secondary-header {
+    @include viewport.use-viewport(desktop, null) {
+        @each $var in (left right top bottom) {
+            &:not(.#{$var}-spacing) {
+                padding-#{$var}: calc(var(--gutter, 0.5rem) * 6);
+            }
+            &.#{$var}-spacing {
+                padding-#{$var}: 40%;
+            }
+        }
+    }
+    @include viewport.use-viewport(tablet, viewport.get-property-value(tablet, "max-width"), null) {
+        @include viewport.use-viewport(phone, null) {
+            padding: calc(var(--gutter, 0.5rem) * 3);
+            text-align: center;
+        }
+    }
+}
+
+.secondary-header,
+.tertiray-header,
+.primary-header {
+    background-position: center center;
+    background-size: 100% 100%;
+}
+
+.primary-header,
+.secondary-header {
+    & .header-title {
+        color: theme.get-theme-value(theme, primary, color);
+        font-size: 2.33rem;
+    }
+}
+
+.tertiary-header {
+    background-attachment: fixed;
+    & .header-left-section {
+        vertical-align: middle;
+        & > img {
+            width: 100%;
+        }
+    }
+    & .header-right-section {
+        vertical-align: middle;
+        & > article {
+            padding: 1rem;
+        }
+    }
+    @include viewport.use-viewport(tablet, viewport.get-property-value(tablet, "max-width"), null) {
+        @include viewport.use-viewport(phone, null) {
+            padding: calc(var(--gutter, 0.5rem) * 2);
+        }
+    }
+    @include viewport.use-viewport(desktop, null) {
+        padding: calc(var(--gutter, 0.5rem) * 6);
+    }
+}
+
+.quaternary-header {
+    border-top-right-radius: 0.86rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    &.highest-padding {
+        padding: calc(var(--gutter, 0.5rem) * 4);
+    }
+    &:not(.highest-padding) {
+        padding: calc(var(--gutter, 0.5rem) * 3);
+    }
+    & .header-icon-section {
+        @include viewport.use-viewport(tablet, viewport.get-property-value(tablet, "max-width"), null) {
+            @include viewport.use-viewport(phone, null) {
+                width: 6.5rem;
+            }
+        }
+        @include viewport.use-viewport(desktop, null) {
+            padding: 0 1rem;
+            width: 10rem;
+        }
+        & .header-icon-background {
+            text-align: center;
+            position: relative;
+            padding: 1rem;
+            width: 100%;
+            &::after {
+                background: theme.get-theme-value(theme, primary, color);
+                border-radius: 0.24rem;
+                position: absolute;
+                opacity: 0.1;
+                height: 100%;
+                content: "";
+                width: 100%;
+                left: 0;
+                top: 0;
+            }
+            & > [class*="material-icons"],
+            & > img {
+                position: relative;
+                width: 100%;
+                z-index: 1;
+            }
+            & > [class*="material-icons"] {
+                color: theme.get-theme-value(theme, primary, color);
+                font-size: 4.5rem;
+                display: block;
+            }
+        }
+    }
+    & .header-main-section {
+        width: 100%;
+    }
+    @include viewport.use-viewport(tablet, viewport.get-property-value(tablet, "max-width"), null) {
+        @include viewport.use-viewport(phone, null) {
+            flex-direction: column;
+        }
+    }
+}

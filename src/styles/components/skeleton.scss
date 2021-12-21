@@ -1,0 +1,17 @@
+@use "./animations";
+@use "../mixins";
+
+.skeleton {
+  position: relative;
+  &::after {
+    background: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(#ffffff), to(transparent));
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    transform: translateX(0%);
+    position: absolute;
+    @extend .loading;
+    display: block;
+    height: 100%;
+    content: "";
+    width: 20%;
+  }
+}

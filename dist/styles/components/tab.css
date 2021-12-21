@@ -1,0 +1,20 @@
+.primary-tab .tab-header {
+  font-size: 0.73rem;
+  color: var(--quaternary-color-theme, #979797);
+}
+.primary-tab:not(.mdc-primary-tab) .tab-header.tab-header-active {
+  background: var(--secondary-background-theme, #1a1a1a);
+}
+
+.mdc-primary-tab .mdc-tab {
+  transition: all 0.5s ease;
+}
+.mdc-primary-tab .mdc-tab__ripple::before, .mdc-primary-tab .mdc-tab__ripple::after {
+  background: var(--secondary-background-theme, #1a1a1a);
+}
+.mdc-primary-tab .mdc-tab-indicator .mdc-tab-indicator__content--underline {
+  border-color: var(--primary-background-palette, #b3a06e);
+}
+.mdc-primary-tab .mdc-tab--active, .mdc-primary-tab .mdc-tab:hover, .mdc-primary-tab .mdc-tab:focus {
+  background: var(--secondary-background-theme, #1a1a1a);
+}

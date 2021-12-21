@@ -1,0 +1,76 @@
+@use "../theme";
+
+.checkbox, .radiobtn{
+  position: relative;
+  padding-left: 2rem;
+  margin-bottom: 0.75rem;
+  cursor: pointer;
+  font-size: 1rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* hide the browser's default checkbox */
+.checkbox input, .radiobtn input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* create custom checkbox */
+.check, .radio {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.4rem;
+  width: 1.4rem;
+  background-color: theme.get-theme-value(theme, senary, background);
+  border: 0.063rem solid theme.get-theme-value(theme, senary, border);
+}
+.check{
+  border-radius: 0.3rem;
+}
+.radio{
+  border-radius: 50%;
+}
+  
+  /* on mouse-over, add border color */
+.checkbox:hover input ~ .check, .radiobtn:hover input ~ .radio {
+  background: theme.get-theme-value(theme, senary, border);
+}
+  
+  /* create the checkmark and hide when not checked */
+.check:after, .radio:after {
+  content: "";
+  position: absolute;
+  display: none;
+  }
+  
+  /* show the checkmark when checked */
+.checkbox input:checked ~ .check:after, .radiobtn input:checked ~ .radio:after {
+  display: block;
+}
+  
+  /* checkmark style */
+.checkbox .check:after{
+  top: 0.26rem;
+  left: 0.5rem;
+  width: 0.313rem;
+  height: 0.625rem;
+  border: solid theme.get-theme-value(status, success, background);
+  border-width: 0 0.125rem 0.125rem 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.radiobtn .radio:after{
+  top: 0.3rem;
+  left: 0.32rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: theme.get-theme-value(status, success, background);
+}
+

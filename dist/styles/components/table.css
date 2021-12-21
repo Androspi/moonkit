@@ -1,0 +1,84 @@
+.primary-table {
+  margin-right: auto;
+  border-spacing: 0;
+  margin-left: auto;
+}
+.primary-table thead th {
+  font-weight: 500;
+}
+.primary-table thead th:not(.not-bordered), .primary-table thead td:not(.not-bordered) {
+  border-bottom: 1px solid var(--primary-background-palette, #b3a06e);
+}
+.primary-table tbody:not(.no-striped) tr:nth-child(even) {
+  background: #ffffff0a;
+}
+.primary-table th {
+  color: var(--primary-color-palette, #ffffff);
+}
+.primary-table td {
+  color: var(--quaternary-color-theme, #979797);
+}
+.primary-table td, .primary-table th {
+  font-size: 0.63rem;
+  padding: 0.5em;
+}
+.primary-table td:not(.allow-multiple-line), .primary-table th:not(.allow-multiple-line) {
+  white-space: nowrap;
+}
+.primary-table td i, .primary-table th i {
+  vertical-align: sub;
+  font-size: 1rem;
+}
+
+.secondary-table {
+  margin-right: auto;
+  border-spacing: 0;
+  margin-left: auto;
+}
+.secondary-table thead.sticky-thead tr:first-child th, .secondary-table thead.sticky-thead tr:first-child td {
+  background: var(--nonary-background-palette, #071825);
+  position: sticky;
+  z-index: 1;
+  top: 0;
+}
+.secondary-table tfoot.sticky-tfoot tr:last-child th, .secondary-table tfoot.sticky-tfoot tr:last-child td {
+  background: var(--nonary-background-palette, #071825);
+  position: sticky;
+  z-index: 1;
+  bottom: 0;
+}
+.secondary-table tbody:not(.no-striped) tr:nth-child(odd) {
+  background: var(--secondary-background-theme, #1a1a1a);
+}
+.secondary-table thead tr, .secondary-table tfoot tr {
+  background: var(--nonary-background-palette, #071825);
+}
+.secondary-table thead :first-child :first-child {
+  border-top-left-radius: 0.26rem;
+}
+.secondary-table thead :first-child :last-child {
+  border-top-right-radius: 0.26rem;
+}
+.secondary-table thead tr {
+  text-align: left;
+}
+.secondary-table tfoot :last-child :first-child {
+  border-bottom-left-radius: 0.26rem;
+}
+.secondary-table tfoot :last-child :last-child {
+  border-bottom-right-radius: 0.26rem;
+}
+.secondary-table th {
+  color: var(--primary-color-palette, #ffffff);
+  font-size: 0.6rem;
+}
+.secondary-table td {
+  color: var(--septenary-color-theme, #d1d1d1);
+  font-size: 0.63rem;
+}
+.secondary-table td, .secondary-table th {
+  padding: 1em 1.5em;
+}
+.secondary-table td:not(.allow-multiple-line), .secondary-table th:not(.allow-multiple-line) {
+  white-space: nowrap;
+}
