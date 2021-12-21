@@ -1,5 +1,5 @@
 {
-  "name": "moonkit-test",
+  "name": "moonkit",
   "version": "1.0.0",
   "description": "CSS and JavaScript library based on htmon for customizable components",
   "types": "dist/index.d.ts",
