@@ -1,4 +1,4 @@
-import { TemplateOperators } from 'htmon-test';
+import { TemplateOperators } from 'htmon';
 export class Slider {
     constructor(container, componentAttribute, id) {
         !id ? id = `Slider-${Math.random().toString(16).substring(2)}` : null;

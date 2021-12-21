@@ -1,4 +1,4 @@
-import { ContainerTemplate, TemplateOperators } from 'htmon-test';
+import { ContainerTemplate, TemplateOperators } from 'htmon';
 import { Subscription } from 'rxjs';
 export class Tooltip {
     constructor(trigger, componentAttribute, options = {}) {

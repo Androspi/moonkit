@@ -1,4 +1,4 @@
-import { TemplateBehaviorClass, ContainerTemplateProperties } from 'htmon-test';
+import { TemplateBehaviorClass } from 'htmon';
 
 import { Autocomplete, AutocompleteOptions } from '../components/autocomplete';
 import { Collapsable, CollapsableOptions } from '../components/collapsable';

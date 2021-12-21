@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { ContainerTemplate, Template, TemplateOperators } from 'htmon-test';
+import { ContainerTemplate, Template, TemplateOperators } from 'htmon';
 export class Modal {
     constructor(trigger, options, clickEvent) {
         this.trigger = trigger;

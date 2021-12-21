@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { ContainerTemplate, ElementTemplate, TemplateOperators } from 'htmon-test';
+import { ContainerTemplate, ElementTemplate, TemplateOperators } from 'htmon';
 import { Subject } from 'rxjs';
 export class Select {
     constructor(trigger, options = {}) {

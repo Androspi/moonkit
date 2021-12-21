@@ -1,4 +1,4 @@
-import { ContainerTemplateContext, IterableTemplateContext, ContainerTemplate, IterableTemplate, TemplateOperators } from 'htmon-test';
+import { ContainerTemplateContext, IterableTemplateContext, ContainerTemplate, IterableTemplate, TemplateOperators } from 'htmon';
 
 export class Slider {
 

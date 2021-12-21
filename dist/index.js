@@ -2,6 +2,7 @@ export * from './interfaces/template-behavior';
 export * from './components/autocomplete';
 export * from './components/collapsable';
 export * from './components/dropdown';
+export * from './components/behavior';
 export * from './components/tooltip';
 export * from './components/select';
 export * from './components/slider';

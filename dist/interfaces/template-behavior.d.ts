@@ -1,4 +1,4 @@
-import { TemplateBehaviorClass, ContainerTemplateProperties } from 'htmon-test';
+import { TemplateBehaviorClass } from 'htmon';
 import { Autocomplete, AutocompleteOptions } from '../components/autocomplete';
 import { Collapsable, CollapsableOptions } from '../components/collapsable';
 import { Modal, ModalOptions, ModalProperties } from '../components/modal';
@@ -29,23 +29,10 @@ export interface TooltipBehaviorProperties {
     tooltipInstance: Tooltip;
 }
 export declare type TooltipBehaviorOptions = Partial<TooltipOptions>;
-export interface LoaderBehaviorProperties {
-    loader: (isLoading: boolean, value: number) => void;
-    increase: () => void;
-    isLoading: boolean;
-}
-export interface LoaderBehaviorOptions {
-    childrenContext?: ContainerTemplateProperties['rows'][number];
-    destroy: (ref: any) => void;
-}
 export declare type ModalBehaviorOptions = Partial<ModalOptions & ModalProperties>;
 export interface ModalBehaviorProperties {
     modalInstance: Modal;
 }
-export interface VideoBehaviorOptions {
-    updateDuration?: boolean;
-}
-export declare type VimeoBehaviorOptions = {};
 export interface ListBehaviorProperties {
     listInstance: List;
 }
@@ -58,11 +45,8 @@ declare global {
             dropdown: InstanceType<TemplateBehaviorClass<BehaviorOptionList['dropdown']>> & DropdownBehaviorProperties;
             tooltip: InstanceType<TemplateBehaviorClass<BehaviorOptionList['tooltip']>> & TooltipBehaviorProperties;
             marquee: InstanceType<TemplateBehaviorClass<BehaviorOptionList['marquee']>> & MarqueeBehaviorProperties;
-            loader: InstanceType<TemplateBehaviorClass<BehaviorOptionList['loader']>> & LoaderBehaviorProperties;
             modal: InstanceType<TemplateBehaviorClass<BehaviorOptionList['modal']>> & ModalBehaviorProperties;
             list: InstanceType<TemplateBehaviorClass<BehaviorOptionList['list']>> & ListBehaviorProperties;
-            vimeo: InstanceType<TemplateBehaviorClass<BehaviorOptionList['vimeo']>>;
-            video: InstanceType<TemplateBehaviorClass<BehaviorOptionList['video']>>;
         }
         interface BehaviorOptionList {
             autocomplete: AutocompleteBehaviorOptions;
@@ -70,9 +54,6 @@ declare global {
             dropdown: DropdownBehaviorOptions;
             tooltip: TooltipBehaviorOptions;
             marquee: MarqueeBehaviorOptions;
-            loader: LoaderBehaviorOptions;
-            vimeo: VimeoBehaviorOptions;
-            video: VideoBehaviorOptions;
             modal: ModalBehaviorOptions;
             list: ListBehaviorOptions;
         }

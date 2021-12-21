@@ -1,4 +1,4 @@
-import { ContainerTemplateContext, ElementTemplateContext, IntersectionTypeList, TemplateEvent, TemplateOperators } from 'htmon-test';
+import { ContainerTemplateContext, ElementTemplateContext, IntersectionTypeList, TemplateEvent, TemplateOperators } from 'htmon';
 
 import { List, ListArea, ListOptions } from './list';
 

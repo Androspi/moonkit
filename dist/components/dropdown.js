@@ -7,7 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { TemplateOptions, ContainerTemplate, TemplateOperators } from 'htmon-test';
+import { TemplateOptions, ContainerTemplate, TemplateOperators } from 'htmon';
 export class Dropdown {
     constructor(trigger, options = {}, build = true) {
         // PROTECTED

@@ -1,4 +1,4 @@
-import { ContainerTemplateContext, IntersectionTypeList } from 'htmon-test';
+import { ContainerTemplateContext, IntersectionTypeList } from 'htmon';
 import { List, ListArea, ListOptions } from './list';
 export interface AutocompleteArea extends ListArea {
     notFoundItem: Partial<IntersectionTypeList['context']>;

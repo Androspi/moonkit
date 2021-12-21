@@ -1,4 +1,4 @@
-import { ContainerTemplate, ContainerTemplateContext, TemplateOperators } from 'htmon-test';
+import { ContainerTemplate, ContainerTemplateContext, TemplateOperators } from 'htmon';
 import { Subscription } from 'rxjs';
 
 

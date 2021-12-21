@@ -1,4 +1,4 @@
-import { TemplateFamily, ContainerTemplate, ContainerTemplateContext, TemplateProperties, IntersectionTypeList } from 'htmon-test';
+import { TemplateFamily, ContainerTemplate, ContainerTemplateContext, TemplateProperties, IntersectionTypeList } from 'htmon';
 export interface DropdownArea {
     dropdown: Partial<Omit<ContainerTemplateContext, 'rows' | 'type' | 'name'>>;
     content: Partial<IntersectionTypeList['context']>[];

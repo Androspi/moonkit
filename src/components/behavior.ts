@@ -1,4 +1,4 @@
-import { BehaviorOptions, ContainerTemplate, IntersectionTypeList } from 'htmon-test';
+import { BehaviorOptions, ContainerTemplate, IntersectionTypeList } from 'htmon';
 import { first } from 'rxjs/operators';
 
 import { Autocomplete, AutocompleteOptions } from './autocomplete';

@@ -1,4 +1,4 @@
-import { ContainerTemplate, ContainerTemplateContext, IntersectionTypeList, SomeContainerTemplateTypeList, Template, TemplateEvent, TemplateOperators, TemplateProperties } from 'htmon-test';
+import { ContainerTemplate, ContainerTemplateContext, IntersectionTypeList, SomeContainerTemplateTypeList, Template, TemplateEvent, TemplateOperators, TemplateProperties } from 'htmon';
 
 export interface ModalClickEvent {
   event: MouseEvent;

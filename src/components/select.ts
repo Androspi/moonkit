@@ -1,4 +1,4 @@
-import { ContainerTemplate, ContainerTemplateContext, ElementTemplate, ElementTemplateContext, IntersectionTypeList, TemplateOperators } from 'htmon-test';
+import { ContainerTemplate, ContainerTemplateContext, ElementTemplate, ElementTemplateContext, IntersectionTypeList, TemplateOperators } from 'htmon';
 import { Subject } from 'rxjs';
 
 import { Autocomplete, AutocompleteOptions } from './autocomplete';

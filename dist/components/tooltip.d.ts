@@ -1,4 +1,4 @@
-import { ContainerTemplateContext } from 'htmon-test';
+import { ContainerTemplateContext } from 'htmon';
 export interface TooltipOptions {
     direction: 'bottom' | 'right' | 'left' | 'top';
     toggleAction: 'click' | 'custom' | 'mouse';
