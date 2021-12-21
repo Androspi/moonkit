@@ -18,7 +18,7 @@
   "author": "Andrés F. Ospina A. <aospinadev@gmail.com> (https://github.com/Androspi)",
   "license": "MIT",
   "dependencies": {
-    "htmon-test": "^1.0.4",
+    "htmon": "^1.0.0",
     "rxjs": "^7.4.0"
   },
   "devDependencies": {
