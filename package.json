@@ -1,6 +1,6 @@
 {
   "name": "moonkit",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "CSS and JavaScript library based on htmon for customizable components",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
