@@ -1,19 +1,21 @@
 @use "../viewport";
-@use 'sass:math';
+@use "sass:math";
 
-$negativeColSpace: var(--negativeGutter, -0.75rem) !default;
-$colSpace: var(--gutter, 0.75rem) !default;
+$colSpace: 0.75rem !default;
 $orderLength: 12 !default;
 $colLength: 12 !default;
 $rowLength: 12 !default;
 $rowName: row !default;
 $colName: col !default;
 
+$negative-col-space: var(--negativeGutter, #{$colSpace * -1});
+$col-space: var(--gutter, $colSpace);
+
 .#{$colName} {
   & > .#{$rowName} {
     &:not(.no-#{$rowName}-margin) {
-      margin-left: #{$negativeColSpace};
-      margin-right: #{$negativeColSpace};
+      margin-left: #{$negative-col-space};
+      margin-right: #{$negative-col-space};
     }
   }
 }
@@ -53,12 +55,12 @@ $colName: col !default;
       vertical-align: top;
     }
     &:not(.no-#{$colName}-padding) {
-      padding-right: $colSpace;
-      padding-left: $colSpace;
+      padding-right: $col-space;
+      padding-left: $col-space;
     }
     &:not(.no-#{$colName}-padding)::after,
     &:not(.no-#{$colName}-padding):before {
-      max-width: calc(100% - (#{$colSpace} * 2));
+      max-width: calc(100% - (#{$col-space} * 2));
     }
     $vp: (
       null: s,
@@ -110,7 +112,7 @@ $colName: col !default;
 .#{$rowName}.grid-#{$rowName} {
   grid-template-columns: repeat($colLength, minmax(0, 1fr));
   grid-template-rows: auto;
-  grid-gap: #{$colSpace};
+  grid-gap: #{$col-space};
   display: grid;
   &[style*="--grid-row-height"] {
     grid-auto-rows: min(var(--grid-row-height, 0));
@@ -184,51 +186,51 @@ $colName: col !default;
 .#{$colName}-padding {
   &-left,
   & {
-    padding-left: $colSpace;
+    padding-left: $col-space;
   }
   &-right,
   & {
-    padding-right: $colSpace;
+    padding-right: $col-space;
   }
 }
 
 .highest-#{$colName}-padding {
   &-left,
   & {
-    padding-left: calc(#{$colSpace} * 1.5);
+    padding-left: calc(#{$col-space} * 1.5);
   }
   &-right,
   & {
-    padding-right: calc(#{$colSpace} * 1.5);
+    padding-right: calc(#{$col-space} * 1.5);
   }
 }
 
 .#{$rowName}-margin {
   &-left,
   & {
-    margin-left: $negativeColSpace;
+    margin-left: $negative-col-space;
   }
   &-right,
   & {
-    margin-right: $negativeColSpace;
+    margin-right: $negative-col-space;
   }
 }
 
 .#{$colName}-margin {
   &-left,
   & {
-    margin-left: $colSpace;
+    margin-left: $col-space;
   }
   &-right,
   & {
-    margin-right: $colSpace;
+    margin-right: $col-space;
   }
   &-left-important,
   &-important {
-    margin-left: $colSpace !important;
+    margin-left: $col-space !important;
   }
   &-right-important,
   &-important {
-    margin-right: $colSpace !important;
+    margin-right: $col-space !important;
   }
 }

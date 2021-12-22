@@ -2,7 +2,7 @@
 @use 'sass:math';
 
 $type: rem !default;
-$measure: 15;
+$measure: 16 !default;
 @if ($type == px) {
   $measure: 1;
 }
@@ -66,14 +66,14 @@ $measure: 15;
   }
 }
 
-$sizes: (34, 30, 26, 22, 18, 14);
-@for $i from 1 through length($sizes) {
+$hSizes: (34, 30, 26, 22, 18, 14) !default;
+@for $i from 1 through length($hSizes) {
   .primary-typography > #{"h" + $i}:not(.text-style):not(.subtitle-style),
   #{"h" + $i}.primary-typography:not(.text-style):not(.subtitle-style),
   .primary-typography #{"h" + $i}.title-style {
     @extend %title-style;
     &:not(.lower-font):not(.lowest-font):not(.higher-font):not(.highest-font) {
-      font-size: #{math.div(nth($sizes, $i), $measure) + $type};
+      font-size: #{math.div(nth($hSizes, $i), $measure) + $type};
     }
   }
 }

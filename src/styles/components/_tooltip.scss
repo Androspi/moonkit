@@ -2,7 +2,7 @@
 @use 'sass:math';
 
 $type: rem !default;
-$measure: 15;
+$measure: 16 !default;
 @if ($type == px) {
   $measure: 1;
 }

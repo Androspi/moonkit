@@ -1,40 +1,52 @@
+$Vphone: (
+  property: (
+    max-width: 639px,
+    min-width: 0px,
+  ),
+) !default;
+
+$Vtablet: (
+  property: (
+    max-width: 959px,
+    min-width: 640px,
+  ),
+) !default;
+
+$Vdesktop: (
+  property: (
+    max-width: 1919px,
+    min-width: 960px,
+  ),
+) !default;
+
+$V2k: (
+  property: (
+    min-width: 1920px,
+    max-width: 3839px,
+  ),
+) !default;
+
+$V4k: (
+  property: (
+    min-width: 3840px,
+    max-width: 3840px,
+  ),
+) !default;
+
+$V8k: (
+  property: (
+    min-width: 7680px,
+    max-width: null,
+  ),
+) !default;
+
 $viewport: (
-  8k: (
-    property: (
-      min-width: 7680px,
-      max-width: null,
-    ),
-  ),
-  4k: (
-    property: (
-      min-width: 3840px,
-      max-width: 7679px,
-    ),
-  ),
-  2k: (
-    property: (
-      min-width: 1920px,
-      max-width: 3839px,
-    ),
-  ),
-  desktop: (
-    property: (
-      max-width: 1919px,
-      min-width: 960px,
-    ),
-  ),
-  tablet: (
-    property: (
-      max-width: 959px,
-      min-width: 640px,
-    ),
-  ),
-  phone: (
-    property: (
-      max-width: 639px,
-      min-width: 0px,
-    ),
-  ),
+  8k: $V8k,
+  4k: $V4k,
+  2k: $V2k,
+  desktop: $Vdesktop,
+  tablet: $Vtablet,
+  phone: $Vphone,
 ) !default;
 
 $measures: (
@@ -46,7 +58,7 @@ $measures: (
   vw: 0.1vw,
   px: 1px,
   pg: 1%,
-);
+) !default;
 
 $sizeBase: "desktop" !default;
 $measureList: vmn vmx rem px vh vw pg !default;
