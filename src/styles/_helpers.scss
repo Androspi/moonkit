@@ -1,4 +1,4 @@
-@use "./mixins";
+@use "./_mixins";
 // margin, padding
 @each $value in (auto, 0) {
   @each $selector in (margin, padding) {

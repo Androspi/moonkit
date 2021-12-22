@@ -1,5 +1,5 @@
-@use "./animations";
-@use "../mixins";
+@use "./_animations";
+@use "../_mixins";
 
 .skeleton {
   position: relative;

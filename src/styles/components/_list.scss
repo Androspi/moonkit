@@ -1,5 +1,5 @@
-@use "../mixins";
-@use "../theme";
+@use "../_mixins";
+@use "../_theme";
 
 .primary-list {
   background: theme.get-theme-value(theme, senary, background);

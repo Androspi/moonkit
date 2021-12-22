@@ -1,6 +1,6 @@
-@use "./animations";
-@use "../mixins";
-@use "../theme";
+@use "./_animations";
+@use "../_mixins";
+@use "../_theme";
 
 .primary-slider {
   transition: all 0.5s ease;

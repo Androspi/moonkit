@@ -1,4 +1,4 @@
-@use "../theme";
+@use "../_theme";
 
 .primary-input {
   background: theme.get-theme-value(theme, septenary, background);

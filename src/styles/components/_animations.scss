@@ -1,5 +1,5 @@
-@use "../animations";
-@use "../mixins";
+@use "../_animations";
+@use "../_mixins";
 
 .rotate {
   @include mixins.generate-compatible-properties(animation-iteration-count, infinite, webkit);

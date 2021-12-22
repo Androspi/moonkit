@@ -1,7 +1,7 @@
-@use "./animations";
-@use "../viewport";
-@use "../mixins";
-@use "../theme";
+@use "./_animations";
+@use "../_viewport";
+@use "../_mixins";
+@use "../_theme";
 
 .modal-surface.modal-surface-active {
   background: rgba(0, 0, 0, 0.8);
