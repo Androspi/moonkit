@@ -1,4 +1,4 @@
-import { Subject, Subscription } from 'rxjs';
+import { Subject, Subscription } from "rxjs";
 
 export interface CollapsableOptions {
   direction: 'vertical' | 'horizontal';
