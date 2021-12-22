@@ -1,7 +1,6 @@
 import { ContainerTemplate, ContainerTemplateContext, ElementTemplateContext, IntersectionTypeList } from 'htmon';
-import { Subject } from 'rxjs';
 import { AutocompleteOptions } from './autocomplete';
-import { ListOptions, ListItemSelectedEvent } from './list';
+import { ListOptions } from './list';
 export interface SelectArea {
     title: Partial<Omit<IntersectionTypeList['context'], 'rows' | 'type' | 'tag' | 'name'>>;
     select: Partial<Omit<ContainerTemplateContext, 'rows' | 'type' | 'tag' | 'name'>>;
@@ -19,14 +18,14 @@ export interface SelectOptions {
 }
 export declare class Select {
     protected SELECTEVENTS: {
-        itemSelected: Subject<ListItemSelectedEvent>;
+        itemSelected: any;
     };
     protected OPTIONS: Partial<SelectOptions>;
     protected TRIGGER: HTMLSelectElement;
     protected INSTANCEID: string;
     get trigger(): Select['TRIGGER'];
     get events(): {
-        itemSelected: Subject<ListItemSelectedEvent>;
+        itemSelected: any;
     };
     get options(): Select['OPTIONS'];
     set options(val: Select['OPTIONS']);

@@ -1,0 +1,49 @@
+@use "../_theme";
+
+.primary-input {
+  background: theme.get-theme-value(theme, septenary, background);
+  border-color: theme.get-theme-value(theme, septenary, border);
+  color: theme.get-theme-value(theme, septenary, color);
+  border-radius: 0.26rem;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.86rem;
+  border-width: 0;
+  outline: none;
+}
+
+.primary-form-field {
+  border: 0.06rem solid theme.get-theme-value(theme, septenary, border);
+  background: theme.get-theme-value(theme, septenary, background);
+  padding: 0.447rem 0.5rem;
+  border-radius: 0.26rem;
+  position: relative;
+  display: flex;
+  & .primary-input {
+    background: transparent;
+    border-radius: 0;
+    border: none;
+    width: 100%;
+  }
+  & .input-suffix,
+  & .input-prefix {
+    color: theme.get-theme-value(theme, septenary, color);
+    justify-content: center;
+    padding: 0.2em 0.25rem;
+    align-items: center;
+    font-size: 0.86rem;
+    cursor: pointer;
+    display: flex;
+    & > * {
+      font-size: 1.4em;
+    }
+  }
+  &.invalid-form-field {
+    border: 0.12rem solid
+      theme.get-theme-value(status, typographyDanger, background);
+    & .primary-input::placeholder,
+    & .primary-input,
+    & .input-prefix {
+      color: theme.get-theme-value(status, typographyDanger, background);
+    }
+  }
+}

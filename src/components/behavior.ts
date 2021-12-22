@@ -1,4 +1,4 @@
-import { BehaviorOptions, ContainerTemplate, IntersectionTypeList } from 'htmon';
+import { BehaviorOptions, ChildrenProgressEvent, ContainerTemplate, IntersectionTypeList } from 'htmon';
 import { first } from 'rxjs/operators';
 
 import { Autocomplete, AutocompleteOptions } from './autocomplete';
@@ -94,7 +94,7 @@ function setMarqueeBehavior() {
   class MarqueeBehavior implements MarqueeBehaviorProperties {
     constructor(public template: ContainerTemplate, public options: MarqueeBehaviorOptions) {
       if (this.template instanceof ContainerTemplate) {
-        this.template.events.childrenReady.pipe(first(event => event.status === true && event.context !== undefined)).subscribe(() => this.init());
+        this.template.events.childrenReady.pipe(first((event: ChildrenProgressEvent) => event.status === true && event.context !== undefined)).subscribe(() => this.init());
       }
     }
 

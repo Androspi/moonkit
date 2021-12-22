@@ -1,0 +1,127 @@
+$Vphone: (
+  property: (
+    max-width: 639px,
+    min-width: 0px,
+  ),
+) !default;
+
+$Vtablet: (
+  property: (
+    max-width: 959px,
+    min-width: 640px,
+  ),
+) !default;
+
+$Vdesktop: (
+  property: (
+    max-width: 1919px,
+    min-width: 960px,
+  ),
+) !default;
+
+$V2k: (
+  property: (
+    min-width: 1920px,
+    max-width: 3839px,
+  ),
+) !default;
+
+$V4k: (
+  property: (
+    min-width: 3840px,
+    max-width: 3840px,
+  ),
+) !default;
+
+$V8k: (
+  property: (
+    min-width: 7680px,
+    max-width: null,
+  ),
+) !default;
+
+$viewport: (
+  8k: $V8k,
+  4k: $V4k,
+  2k: $V2k,
+  desktop: $Vdesktop,
+  tablet: $Vtablet,
+  phone: $Vphone,
+) !default;
+
+$measures: (
+  vmn: 0.1vmin,
+  vmx: 0.1vmax,
+  rem: 0.01rem,
+  em: 0.01em,
+  vh: 0.1vh,
+  vw: 0.1vw,
+  px: 1px,
+  pg: 1%,
+) !default;
+
+$sizeBase: "desktop" !default;
+$measureList: vmn vmx rem px vh vw pg !default;
+
+@function get-viewport(
+  $size,
+  $maxWidth: get-property-value($size, "max-width"),
+  $minWidth: get-property-value($size, "min-width")
+) {
+  $media: null;
+  @if $minWidth {
+    $media: $media + "(min-width: " + $minWidth + ")";
+  }
+  @if $maxWidth {
+    @if $minWidth {
+      $media: $media + " and ";
+    }
+    $media: $media + "(max-width: " + $maxWidth + ")";
+  }
+  @return if($media != null, "only screen and " + $media, null);
+}
+
+@mixin use-viewport(
+  $size,
+  $maxWidth: get-property-value($size, "max-width"),
+  $minWidth: get-property-value($size, "min-width")
+) {
+  @if get-viewport($size, $maxWidth, $minWidth) != null {
+    @media #{get-viewport($size, $maxWidth, $minWidth)} {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin generate-measure($size: (), $measureList: $measureList, $name: "measure") {
+  @each $msk in $measureList {
+    $msv: map-get($measures, $msk);
+    @if $msv {
+      &-#{$msk} {
+        @for $i from 1 through length($size) {
+          $v: nth($size, $i);
+          --#{$name + if($i == 1, '', $i)}: calc(var(--viewport-#{$msk}-value, #{$msv}) * #{$v});
+        }
+        @content;
+      }
+    }
+  }
+}
+
+@function get-measure($size: 1, $measure: px) {
+  $msv: map-get($measures, $measure);
+  @return if($msv, $msv * $size, $size * 1px);
+}
+
+@function get-property-value($size, $property, $listName: property) {
+  $sizes: map-get($viewport, $size);
+  @if ($sizes) {
+    $lists: map-get($sizes, $listName);
+    @if ($lists) {
+      @return map-get($lists, $property);
+    }
+  }
+  @return null;
+}

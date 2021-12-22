@@ -1,0 +1,54 @@
+@use "../_theme";
+@use "sass:math";
+
+$type: rem !default;
+$measure: 15 !default;
+@if ($type == px) {
+  $measure: 1;
+}
+
+button.secondary-button {
+  border: #{math.div(1, $measure) + $type} solid transparent;
+  background: transparent;
+}
+
+button.primary-button {
+  border-width: #{math.div(1, $measure) + $type};
+  background: transparent;
+  border-style: solid;
+}
+
+.secondary-button,
+.primary-button {
+  text-decoration: none;
+  display: inline-block;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+  & > * {
+    vertical-align: middle;
+    display: inline-block;
+  }
+  & > [class*="material-icons"] {
+    font-size: 1.6em;
+  }
+}
+
+.primary-button {
+  padding: #{math.div(5, $measure) + $type} #{math.div(15, $measure) + $type};
+  color: theme.get-theme-value(theme, septenary, color);
+  border-radius: #{math.div(5, $measure) + $type};
+  font-size: #{math.div(11.5, $measure) + $type};
+}
+
+.secondary-button {
+  color: theme.get-theme-value(theme, primary, color);
+  font-size: #{math.div(13.33, $measure) + $type};
+  padding: #{math.div(7.5, $measure) + $type};
+  &.no-circular-button {
+    border-radius: #{math.div(5, $measure) + $type};
+  }
+  &:not(.no-circular-button) {
+    border-radius: 50%;
+  }
+}

@@ -1,0 +1,96 @@
+@use "../_animations";
+@use "../_mixins";
+
+.rotate {
+  @include mixins.generate-compatible-properties(animation-iteration-count, infinite, webkit);
+  @include mixins.generate-compatible-properties(animation-timing-function, linear, webkit);
+  @include mixins.generate-compatible-properties(animation-duration, 2s, webkit);
+  @include mixins.generate-compatible-properties(animation-name, rotate, webkit);
+}
+
+.horizontal-scroll {
+  @include mixins.generate-compatible-properties(animation-iteration-count, infinite, webkit);
+  @include mixins.generate-compatible-properties(animation-timing-function, linear, webkit);
+  @include mixins.generate-compatible-properties(animation-name, horizontal-scroll, webkit);
+  &:hover {
+    @include mixins.generate-compatible-properties(animation-play-state, paused, webkit);
+  }
+}
+
+.vertical-scroll {
+  @include mixins.generate-compatible-properties(animation-iteration-count, infinite, webkit);
+  @include mixins.generate-compatible-properties(animation-timing-function, linear, webkit);
+  @include mixins.generate-compatible-properties(animation-name, vertical-scroll, webkit);
+  &:hover {
+    @include mixins.generate-compatible-properties(animation-play-state, paused, webkit);
+  }
+}
+
+.slide-in-right-showing {
+  @include mixins.generate-compatible-properties(animation-name, slide-in-right-showing, webkit);
+  @include mixins.generate-compatible-properties(animation-timing-function, ease-out, webkit);
+  @include mixins.generate-compatible-properties(animation-fill-mode, forwards, webkit);
+  @include mixins.generate-compatible-properties(animation-duration, 1s, webkit);
+}
+
+.slide-in-left-showing {
+  @include mixins.generate-compatible-properties(animation-name, slide-in-left-showing, webkit);
+  @include mixins.generate-compatible-properties(animation-timing-function, ease-out, webkit);
+  @include mixins.generate-compatible-properties(animation-fill-mode, forwards, webkit);
+  @include mixins.generate-compatible-properties(animation-duration, 1s, webkit);
+}
+
+.fadeIn {
+  @include mixins.generate-compatible-properties(animation-timing-function, ease, webkit);
+  @include mixins.generate-compatible-properties(animation-duration, 1s, webkit);
+  @include mixins.generate-compatible-properties(animation-name, fadeIn, webkit);
+}
+
+.slide-in-bottom {
+  @include mixins.generate-compatible-properties(animation-timing-function, ease, webkit);
+  @include mixins.generate-compatible-properties(animation-name, slide-in-bottom, webkit);
+  @include mixins.generate-compatible-properties(animation-duration, 0.5s, webkit);
+}
+
+.float {
+  @include mixins.generate-compatible-properties(animation-timing-function, ease-in-out, webkit);
+  @include mixins.generate-compatible-properties(animation-iteration-count, infinite, webkit);
+  @include mixins.generate-compatible-properties(animation-duration, 6s, webkit);
+  @include mixins.generate-compatible-properties(animation-name, float, webkit);
+}
+
+.loading {
+  @include mixins.generate-compatible-properties(animation-timing-function, ease-in-out, webkit);
+  @include mixins.generate-compatible-properties(animation-iteration-count, infinite, webkit);
+  @include mixins.generate-compatible-properties(animation-duration, 1.2s, webkit);
+  @include mixins.generate-compatible-properties(animation-name, loading, webkit);
+}
+
+.enter-right {
+  @include mixins.generate-compatible-properties(animation-timing-function, ease, webkit);
+  @include mixins.generate-compatible-properties(animation-name, enter-right, webkit);
+  @include mixins.generate-compatible-properties(animation-duration, 0.5s, webkit);
+}
+
+.slide-in-right {
+  @include mixins.generate-compatible-properties(animation-timing-function, ease, webkit);
+  @include mixins.generate-compatible-properties(animation-name, slide-in-right, webkit);
+  @include mixins.generate-compatible-properties(animation-duration, 0.5s, webkit);
+}
+
+.slide-out {
+  @include mixins.generate-compatible-properties(animation, slide-out 0.5s ease-in, webkit);
+}
+
+.scale-from-zero {
+  @include mixins.generate-compatible-properties(animation-timing-function, ease, webkit);
+  @include mixins.generate-compatible-properties(animation-name, scale-from-zero, webkit);
+  @include mixins.generate-compatible-properties(animation-duration, 0.5s, webkit);
+}
+
+.scale-to-full-size {
+  @include mixins.generate-compatible-properties(animation-timing-function, ease-in-out, webkit);
+  @include mixins.generate-compatible-properties(animation-name, scale-to-full-size, webkit);
+  @include mixins.generate-compatible-properties(animation-fill-mode, forwards, webkit);
+  @include mixins.generate-compatible-properties(animation-duration, 200ms, webkit);
+}

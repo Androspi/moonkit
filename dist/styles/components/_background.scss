@@ -1,0 +1,128 @@
+@use 'sass:math';
+
+%background-style {
+  position: relative;
+  &::after {
+    transition: all 125ms ease;
+    border-radius: inherit;
+    position: absolute;
+    height: 100%;
+    content: "";
+    width: 100%;
+    left: 0;
+    top: 0;
+  }
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.active-opaque-background,
+.active-shiny-background,
+.active-dark-background,
+.opaque-background,
+.shiny-background,
+.dark-background {
+  @extend %background-style;
+  @for $val from 1 to 11 {
+    &-#{$val} {
+      @extend %background-style;
+    }
+  }
+}
+
+.over-opaque-background,
+.over-shiny-background,
+.over-dark-background {
+  &:active,
+  &:hover,
+  &:focus {
+    @extend %background-style;
+    cursor: pointer;
+  }
+  @for $val from 1 to 11 {
+    &-#{$val} {
+      &:active,
+      &:hover,
+      &:focus {
+        @extend %background-style;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.opaque-background::after {
+  opacity: 0.3;
+}
+.shiny-background::after {
+  filter: brightness(1.1);
+}
+.dark-background::after {
+  filter: brightness(0.7);
+}
+
+@for $val from 1 to 11 {
+  .over-opaque-background-#{$val}:active,
+  .over-opaque-background-#{$val}:hover,
+  .over-opaque-background-#{$val}:focus,
+  .opaque-background-#{$val} {
+    &::after {
+      opacity: #{math.div($val, 10)};
+    }
+  }
+  .over-shiny-background-#{$val}:active,
+  .over-shiny-background-#{$val}:hover,
+  .over-shiny-background-#{$val}:focus,
+  .shiny-background-#{$val} {
+    &::after {
+      filter: brightness(#{1 + (math.div($val, 10))});
+    }
+  }
+  .over-dark-background-#{$val}:active,
+  .over-dark-background-#{$val}:hover,
+  .over-dark-background-#{$val}:focus,
+  .dark-background-#{$val} {
+    &::after {
+      filter: brightness(#{1 - (math.div($val, 10))});
+    }
+  }
+}
+
+@for $val from 1 to 11 {
+  .active-opaque-background-#{$val}::after {
+    opacity: #{math.div($val, 10)};
+  }
+  .active-shiny-background-#{$val}::after {
+    filter: brightness(#{1 + (math.div($val, 10))});
+  }
+  .active-dark-background-#{$val}::after {
+    filter: brightness(#{1 - (math.div($val, 10))});
+  }
+}
+
+.over-opaque-background:active,
+.over-opaque-background:focus,
+.over-opaque-background:hover,
+.active-opaque-background {
+  &::after {
+    opacity: 0.5;
+  }
+}
+.over-shiny-background:active,
+.over-shiny-background:focus,
+.over-shiny-background:hover,
+.active-shiny-background {
+  &::after {
+    filter: brightness(1.3);
+  }
+}
+.over-dark-background:active,
+.over-dark-background:focus,
+.over-dark-background:hover,
+.active-dark-background {
+  &::after {
+    filter: brightness(0.5);
+  }
+}

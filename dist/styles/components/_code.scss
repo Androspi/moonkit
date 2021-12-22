@@ -1,0 +1,133 @@
+@use "../_theme";
+
+.secondary-code,
+.tertiary-code,
+.primary-code {
+  background: theme.get-theme-value(theme, senary, background);
+  color: theme.get-theme-value(theme, primary, color);
+  padding: calc(var(--gutter, 0.5rem) * 2);
+  border-radius: 0.16rem;
+  white-space: pre-line;
+  font-size: 0.83rem;
+  position: relative;
+  & *:not(.code-lenguage):not(.code-break) {
+    display: inline;
+  }
+  & .code-break {
+    padding-left: 1rem;
+  }
+  & .code-language {
+    border: 0.06rem solid theme.get-theme-value(theme, septenary, border);
+    background: theme.get-theme-value(theme, septenary, background);
+    color: theme.get-theme-value(theme, septenary, color);
+    position: absolute;
+    font-size: 0.6em;
+    padding: 0.1rem;
+    left: 0;
+    top: 0;
+  }
+  & .code-symbol {
+    color: #767a79;
+  }
+}
+
+.primary-code {
+  & .code-tag {
+    color: #5584e2;
+  }
+  & .attr-name {
+    color: #92d2f7;
+  }
+  & .attr-value {
+    color: #ca7a44;
+  }
+  & .code-comment {
+    font-size: 0.75em;
+    color: #3aa647;
+    &::before {
+      content: "\<!-- ";
+      display: none;
+    }
+    &::after {
+      content: " -->";
+      display: none;
+    }
+  }
+}
+
+.secondary-code,
+.tertiary-code {
+  & .code-string {
+    white-space: break-spaces;
+    color: #d2866a;
+    &:not(.without-quote) {
+      &::before {
+        content: open-quote;
+        display: none;
+      }
+      &::after {
+        content: close-quote;
+        display: none;
+      }
+    }
+  }
+  & .code-function {
+    color: #dabe58;
+  }
+}
+
+.secondary-code {
+  & .code-class {
+    color: #dab46c;
+  }
+  & .code-rule {
+    color: #cf598e;
+  }
+  & .code-property {
+    color: #92d2f7;
+  }
+  & .code-value {
+    color: #abbf7d;
+  }
+  & .code-variable {
+    color: #ffffff;
+  }
+  & .code-comment {
+    font-size: 0.75em;
+    color: #3aa647;
+    &::before {
+      content: "// ";
+      display: none;
+    }
+  }
+}
+
+.tertiary-code {
+  & .code-variable-statement {
+    color: #5584e2;
+  }
+  & .code-statement {
+    color: #cf598e;
+  }
+  & .code-variable {
+    color: #92d2f7;
+  }
+  & .code-class {
+    color: #39a783;
+  }
+  & .code-number {
+    color: #abbf7d;
+  }
+  & .code-comment {
+    font-size: 0.75em;
+    color: #3aa647;
+    &::before {
+      content: "/" "*" "* ";
+      display: none;
+    }
+    &::after {
+      content: " */";
+      display: none;
+    }
+  }
+}

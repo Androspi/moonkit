@@ -12,7 +12,11 @@
     "type": "git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run typescript && npm run scss && npm run copyFiles",
+    "typescript": "tsc",
+    "scss": "gulp",
+    "copyFiles": "copyfiles -u 2 \"src/styles/**/*.scss\" dist/styles"
   },
   "keywords": [],
   "author": "Andrés F. Ospina A. <aospinadev@gmail.com> (https://github.com/Androspi)",

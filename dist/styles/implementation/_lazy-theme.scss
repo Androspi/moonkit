@@ -1,0 +1,33 @@
+@use "../_mixins";
+@use "../_theme";
+
+$selectors: (
+  "::before:active",
+  "::after:active",
+  "::before:focus",
+  "::before:hover",
+  "::after:hover",
+  "::after:focus",
+  "::before",
+  "::after",
+  ":active",
+  ":focus",
+  ":hover"
+) !default;
+
+@each $themeKey, $themeValue in theme.$themes {
+  @each $property, $propertyValue in $themeValue {
+    @each $type, $typeValue in $propertyValue {
+      @each $style, $styleValue in $typeValue {
+        [theme=#{($type + "-" + $style + "-" + $property)}] {
+          --used-theme: #{$styleValue};
+        }
+      }
+    }
+  }
+}
+
+@include mixins.make-important(".background-color-theme", background-color, var(--used-theme), $selectors);
+@include mixins.make-important(".border-color-theme", border-color, var(--used-theme), $selectors);
+@include mixins.make-important(".background-theme", background, var(--used-theme), $selectors);
+@include mixins.make-important(".color-theme", color, var(--used-theme), $selectors);

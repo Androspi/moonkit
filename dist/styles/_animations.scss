@@ -1,0 +1,222 @@
+@use "./_mixins";
+
+@include mixins.use-keyframes(slide-in-right) using ($prefix) {
+  from {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateX(-100%));
+  }
+  to {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateX(0%));
+  }
+}
+
+@include mixins.use-keyframes(slide-in-bottom) using ($prefix) {
+  from {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateY(-100%));
+  }
+  to {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateY(0%));
+  }
+}
+
+@include mixins.use-keyframes(slide-out) using ($prefix) {
+  from {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateX(0%));
+  }
+  to {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateX(-100%));
+  }
+}
+
+@include mixins.use-keyframes(fadeIn) using ($prefix) {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@include mixins.use-keyframes(scroll) using ($prefix) {
+  0% {
+    left: 90%;
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateY(-50%));
+  }
+  100% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translate(-100%, -50%));
+  }
+}
+
+@include mixins.use-keyframes(horizontal-scroll) using ($prefix) {
+  100% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateX(-100%));
+    left: 0%;
+  }
+}
+
+@include mixins.use-keyframes(vertical-scroll) using ($prefix) {
+  100% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateY(-100%));
+    top: 0%;
+  }
+}
+
+@include mixins.use-keyframes(exit-left) using ($prefix) {
+  0% {
+    left: 100%;
+  }
+  100% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateX(-100%));
+  }
+}
+
+@include mixins.use-keyframes(exit-right) using ($prefix) {
+  0% {
+    left: 0;
+  }
+  100% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateX(100%));
+  }
+}
+
+@include mixins.use-keyframes(enter-right) using ($prefix) {
+  0% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateX(100%));
+  }
+  100% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateX(0%));
+  }
+}
+
+@include mixins.use-keyframes(float) using ($prefix) {
+  0% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translate(0, 0) scale(1));
+    filter: brightness(1);
+  }
+  50% {
+    @include mixins.use-keyframes-with-compatible-properties(
+      $prefix,
+      transform,
+      translate(-0.33rem, -1.33rem) scale(1.05)
+    );
+    filter: brightness(1.25);
+  }
+  100% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translate(0, 0) scale(1));
+    filter: brightness(1);
+  }
+}
+
+@include mixins.use-keyframes(slide-in-right-showing) using ($prefix) {
+  0% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateX(-200%) scale(0.5));
+    opacity: 0.5;
+  }
+  80% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateX(0%) scale(0.75));
+    opacity: 0.5;
+  }
+  100% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateX(0%) scale(1));
+    opacity: 1;
+  }
+}
+
+@include mixins.use-keyframes(slide-in-left-showing) using ($prefix) {
+  0% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateX(200%) scale(0.5));
+    opacity: 0.5;
+  }
+  80% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateX(0%) scale(0.75));
+    opacity: 0.5;
+  }
+  100% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateX(0%) scale(1));
+    opacity: 1;
+  }
+}
+
+@include mixins.use-keyframes(rotate) using ($prefix) {
+  0% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, rotate(360deg));
+  }
+  100% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, rotate(0deg));
+  }
+}
+
+@include mixins.use-keyframes(loading) using ($prefix) {
+  50% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateX(400%));
+  }
+  100% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateX(0%));
+  }
+}
+
+@include mixins.use-keyframes(bouncing) using ($prefix) {
+  from {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateY(4rem));
+  }
+  to {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, translateY(0));
+  }
+}
+
+@include mixins.use-keyframes(shrink) using ($prefix) {
+  0% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, scale(1.7, 0.253));
+  }
+  40% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, scaleX(1) scaleY(1.023));
+  }
+}
+
+@include mixins.use-keyframes(bouncing-shadow) using ($prefix) {
+  0% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, scaleX(1.5));
+  }
+  40% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, scaleX(1));
+    opacity: 0.7;
+  }
+  100% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, scaleX(0.2));
+    opacity: 0.4;
+  }
+}
+
+@include mixins.use-keyframes(scale-from-zero) using ($prefix) {
+  0% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, scale(0));
+  }
+  100% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, scale(1));
+  }
+}
+
+@include mixins.use-keyframes(scale-to-full-size) using ($prefix) {
+  0% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, scale(0.8));
+    opacity: 0;
+  }
+  100% {
+    @include mixins.use-keyframes-with-compatible-properties($prefix, transform, scale(1));
+    opacity: 1;
+  }
+}
+
+@include mixins.use-keyframes(appear) using ($prefix) {
+  to {
+    opacity: 1;
+  }
+}

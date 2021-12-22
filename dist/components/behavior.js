@@ -105,7 +105,7 @@ function setMarqueeBehavior() {
             };
             this.destroy = () => new Promise(resolve => resolve());
             if (this.template instanceof ContainerTemplate) {
-                this.template.events.childrenReady.pipe(first(event => event.status === true && event.context !== undefined)).subscribe(() => this.init());
+                this.template.events.childrenReady.pipe(first((event) => event.status === true && event.context !== undefined)).subscribe(() => this.init());
             }
         }
         restart() { this.destroy(); this.init(); }

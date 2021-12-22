@@ -1,0 +1,201 @@
+@use "./_mixins";
+
+$themes: (
+  dark-theme: (
+    theme: (
+      primary: (
+        background: #000000,
+        color: #ffffff,
+      ),
+      secondary: (
+        complementary: #5e6870,
+        background: #1a1a1a,
+        color: #ffffff,
+      ),
+      tertiary: (
+        background: #343434,
+        color: #ffffff,
+      ),
+      quaternary: (
+        background: #212121,
+        color: #979797,
+      ),
+      quinary: (
+        background: #d8d8d8,
+        color: #000000,
+      ),
+      senary: (
+        complementary: #707070,
+        background: #0d0d0d,
+        color: #d8d8d8,
+        border: #414141,
+      ),
+      septenary: (
+        background: #131313,
+        border: #292929,
+        color: #d1d1d1,
+      ),
+    ),
+    status: (
+      success: (
+        background: #1afcc6,
+        color: #ffffff,
+      ),
+      warning: (
+        background: #ff9800,
+        color: #ffffff,
+      ),
+      danger: (
+        background: #f9304f,
+        color: #ffffff,
+      ),
+      typographySuccess: (
+        background: #2ecc71,
+        color: #000000,
+      ),
+      typographyWarning: (
+        background: #ffff00,
+        color: #000000,
+      ),
+      typographyDanger: (
+        background: #ff2c4b,
+        color: #ffffff,
+      ),
+      free: (
+        background: #000000,
+        color: #ffffff,
+      ),
+    ),
+    palette: (
+      primary: (
+        background: #b3a06e,
+        color: #ffffff,
+      ),
+      secondary: (
+        background: #00457c,
+        color: #ffffff,
+      ),
+      tertiary: (
+        background: #ffca49,
+        color: #ffffff,
+      ),
+      quaternary: (
+        background: #3bafda,
+        color: #ffffff,
+      ),
+      quinary: (
+        background: #f05f3c,
+        color: #ffffff,
+      ),
+      senary: (
+        background: #7ab479,
+        color: #ffffff,
+      ),
+      septenary: (
+        background: #9b59b6,
+        color: #ffffff,
+      ),
+      octonary: (
+        background: #1AFCC6,
+        color: #ffffff,
+      ),
+      nonary: (
+        background: #071825,
+        color: #ffffff,
+      ),
+      decimary: (
+        background: #FF006699,
+        color: #ffffff,
+      ),
+    ),
+  ),
+) !default;
+
+$typesBase: background color complementary border !default;
+$listBase: theme status palette !default;
+$themeBase: "dark-theme" !default;
+$theme-values: null;
+@mixin each-theme-clases($selectors) {
+  @each $themeKey in $listBase {
+    @each $listKey, $listValue in map-get(map-get($themes, $themeBase), $themeKey) {
+      @each $selectorInput in join((""), $selectors) {
+        $selectorKey: mixins.str-replace(mixins.str-replace($selectorInput, "::", ":"), ":", "-");
+        $theme-values: (
+          "selectorInput": $selectorInput,
+          "selectorKey": $selectorKey,
+          "listValue": $listValue,
+          "themeKey": $themeKey,
+          "listKey": $listKey,
+        ) !global;
+        @content;
+        $theme-values: null !global;
+      }
+    }
+  }
+}
+
+@function get-keys($key) {
+  @return map-get($theme-values, $key);
+}
+
+@function get-theme-value($listName, $attribute, $typeName, $default: #ff0000) {
+  $attributes: map-get(map-get($themes, $themeBase), $listName);
+  @if $attributes {
+    $types: map-get($attributes, $attribute);
+    @if $types {
+      $value: map-get($types, $typeName);
+      @if $value {
+        @return var(--#{$attribute + "-" + $typeName + "-" + $listName}, $value);
+      } @else {
+        @return $default;
+      }
+    } @else {
+      @return $default;
+    }
+  } @else {
+    @return $default;
+  }
+}
+
+@mixin generate-theme-classes($prefix, $property, $typesBase: $typesBase, $selectors...) {
+  @each $typeKey in $typesBase {
+    @include each-theme-clases($selectors) {
+      $selectorInput: get-keys("selectorInput");
+      $selectorKey: get-keys("selectorKey");
+      $listValue: get-keys("listValue");
+      $themeKey: get-keys("themeKey");
+      $listKey: get-keys("listKey");
+      @if map-get($listValue, $typeKey) {
+        #{"." + $prefix + "-" + $listKey + "-" + $typeKey + "-" + $themeKey + $selectorKey} {
+          $value: var(--#{$listKey + "-" + $typeKey + "-" + $themeKey}, map-get($listValue, $typeKey));
+          &#{$selectorInput} {
+            #{$property}: $value;
+          }
+          &#{"-important" + $selectorInput} {
+            #{$property}: $value !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-gradient($prefix, $typeKey, $values: "/value/", $selectors...) {
+  @include each-theme-clases($selectors) {
+    $selectorInput: get-keys("selectorInput");
+    $selectorKey: get-keys("selectorKey");
+    $listValue: get-keys("listValue");
+    $themeKey: get-keys("themeKey");
+    $listKey: get-keys("listKey");
+    #{"." + $prefix + "-" + $listKey + "-" + $typeKey + "-" + $themeKey + $selectorKey} {
+      $value: var(--#{$listKey + "-" + $typeKey + "-" + $themeKey}, map-get($listValue, $typeKey));
+      $gradient: str-replace($values, "/value/", $value);
+      &#{$selectorInput} {
+        background: linear-gradient(#{$gradient});
+      }
+      &#{"-important" + $selectorInput} {
+        background: linear-gradient(#{$gradient}) !important;
+      }
+    }
+  }
+}

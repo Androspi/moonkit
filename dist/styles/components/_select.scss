@@ -1,0 +1,46 @@
+@use "../_theme";
+
+.primary-select {
+  border: 0.06rem solid theme.get-theme-value(theme, septenary, border);
+  background: theme.get-theme-value(theme, septenary, background);
+  grid-template-columns: minmax(auto, 1fr);
+  grid-template-rows: auto;
+  border-radius: 0.24rem;
+  column-gap: 0.33rem;
+  row-gap: 0.2rem;
+  padding: 0.2rem;
+  cursor: pointer;
+  display: grid;
+  width: 100%;
+  &:focus,
+  &:focus-within {
+    & .select-icon-section {
+      transform: rotate(180deg);
+    }
+  }
+  & .select-icon-section {
+    color: theme.get-theme-value(theme, primary, color);
+    transition: transform 0.25s ease;
+    grid-row-end: span 2;
+    grid-column-end: 1;
+    align-self: center;
+    font-size: 1.5rem;
+  }
+  & .select-title-section {
+    color: theme.get-theme-value(theme, primary, color);
+    grid-column-end: 2;
+    font-size: 0.73rem;
+    font-weight: bold;
+    & + .select-value-section {
+      grid-row-end: span 1;
+    }
+  }
+  & .select-value-section {
+    color: theme.get-theme-value(theme, septenary, color);
+    background: transparent;
+    grid-row-end: span 2;
+    grid-column-end: 2;
+    font-size: 0.86rem;
+    padding: 0;
+  }
+}

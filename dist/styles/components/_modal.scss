@@ -1,0 +1,98 @@
+@use "./_animations";
+@use "../_viewport";
+@use "../_mixins";
+@use "../_theme";
+
+.modal-surface.modal-surface-active {
+  background: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 4;
+  left: 0;
+  top: 0;
+  & .modal-content {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    &.animated-modal-content {
+      @extend .scale-to-full-size;
+    }
+    & > .primary-modal {
+      @include mixins.generate-compatible-properties(transform, translate(-50%, -50%), webkit, ms);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      & .modal-body-style {
+        max-height: 80vh;
+        overflow: auto;
+      }
+    }
+  }
+}
+
+.modal-surface:not(.modal-surface-active) {
+  & > .primary-modal,
+  & {
+    display: none;
+  }
+}
+
+.primary-modal {
+  box-shadow: 0 0.23rem 1.3rem 0.16rem rgba(46, 34, 34, 0.08);
+  background-color: transparent;
+  --mdc-shape-medium: 0.16rem;
+  border-radius: 0.16rem;
+  max-width: 100vw;
+  & .modal-header-style {
+    background: theme.get-theme-value(theme, secondary, background);
+    color: theme.get-theme-value(theme, secondary, color);
+    position: relative;
+    font-size: 1.5rem;
+    padding: {
+      right: calc((var(--gutter, 0.5rem) * 5) + 0.5em);
+      bottom: calc(var(--gutter, 0.5rem) * 2);
+      left: calc(var(--gutter, 0.5rem) * 2);
+      top: calc(var(--gutter, 0.5rem) * 2);
+    }
+    & .modal-close-icon-style {
+      font-size: 0.5em;
+      top: 50%;
+    }
+  }
+  & .modal-body-style {
+    background: theme.get-theme-value(theme, senary, background);
+    color: theme.get-theme-value(theme, septenary, color);
+    padding: calc(var(--gutter, 0.5rem) * 3);
+    font-size: 0.73rem;
+    position: relative;
+    @include viewport.use-viewport(tablet, viewport.get-property-value(tablet, "max-width"), null) {
+      @include viewport.use-viewport(phone, null) {
+        padding: calc(var(--gutter, 0.5rem) * 1);
+      }
+    }
+    & .modal-close-icon-style {
+      font-size: 1em;
+      top: 5%;
+    }
+  }
+  & .modal-close-icon-style {
+    @include mixins.generate-compatible-properties(transform, translateY(-50%), webkit, ms);
+    color: theme.get-theme-value(theme, septenary, color);
+    right: calc(var(--gutter, 0.5rem) * 3);
+    position: absolute;
+    cursor: pointer;
+    z-index: 2;
+    &:hover,
+    &:active,
+    &:focus {
+      color: theme.get-theme-value(theme, secondary, color);
+    }
+  }
+}
+
+.mdc-dialog .mdc-dialog__surface.primary-modal {
+  background-color: transparent;
+  border-radius: 0.16rem;
+  max-width: 100vw;
+}

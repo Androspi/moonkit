@@ -1,0 +1,86 @@
+@use "../_theme";
+@use 'sass:math';
+
+$type: rem !default;
+$measure: 16 !default;
+@if ($type == px) {
+  $measure: 1;
+}
+
+%title-style {
+  color: theme.get-theme-value(theme, primary, color);
+  font-weight: 700;
+}
+
+.primary-typography {
+  & .title-style,
+  &.title-style {
+    @extend %title-style;
+    & > .highest-font,
+    &.highest-font {
+      font-size: #{math.div(34, $measure) + $type};
+    }
+    &:not(.highest-font):not(.lower-font):not(.lowest-font),
+    & > .higher-font,
+    &.higher-font {
+      font-size: #{math.div(26, $measure) + $type};
+    }
+    & > .lower-font,
+    &.lower-font {
+      font-size: #{math.div(18, $measure) + $type};
+    }
+    & > .lowest-font,
+    &.lowest-font {
+      font-size: #{math.div(15, $measure) + $type};
+    }
+  }
+  & .subtitle-style,
+  &.subtitle-style {
+    color: theme.get-theme-value(theme, septenary, color);
+    font-size: #{math.div(13, $measure) + $type};
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    font-weight: lighter;
+  }
+  & .text-style,
+  &.text-style {
+    color: theme.get-theme-value(theme, septenary, color);
+    font-weight: lighter;
+    &:not(.highest-font):not(.higher-font):not(.lower-font),
+    &.lowest-font,
+    & > .lowest-font {
+      font-size: #{math.div(11.5, $measure) + $type};
+    }
+    &.highest-font,
+    & > .highest-font {
+      font-size: #{math.div(17, $measure) + $type};
+    }
+    &.higher-font,
+    & > .higher-font {
+      font-size: #{math.div(15, $measure) + $type};
+    }
+    &.lower-font,
+    & > .lower-font {
+      font-size: #{math.div(13, $measure) + $type};
+    }
+  }
+}
+
+$hSizes: (34, 30, 26, 22, 18, 14) !default;
+@for $i from 1 through length($hSizes) {
+  .primary-typography > #{"h" + $i}:not(.text-style):not(.subtitle-style),
+  #{"h" + $i}.primary-typography:not(.text-style):not(.subtitle-style),
+  .primary-typography #{"h" + $i}.title-style {
+    @extend %title-style;
+    &:not(.lower-font):not(.lowest-font):not(.higher-font):not(.highest-font) {
+      font-size: #{math.div(nth($hSizes, $i), $measure) + $type};
+    }
+  }
+}
+
+.primary-typography > p.title-style,
+p.primary-typography.title-style {
+  &:not(.lower-font):not(.lowest-font):not(.higher-font):not(.highest-font) {
+    font-size: #{math.div(12, $measure) + $type};
+  }
+}

@@ -31,7 +31,7 @@ export declare class List<OPT extends ListOptions = ListOptions> extends Dropdow
     protected LISTEVENTS: ListEvents;
     /** @get Obtiene los eventos del componente */
     get events(): {
-        itemSelected: Subject<ListItemSelectedEvent>;
+        itemSelected: any;
     };
     /** @set Actualiza el listado y reinicia la visualización del componente */
     set data(val: ListOptions['data']);

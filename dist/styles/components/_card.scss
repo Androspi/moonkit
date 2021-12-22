@@ -1,0 +1,212 @@
+@use "../_mixins";
+@use "../_theme";
+
+.primary-card {
+  background: theme.get-theme-value(theme, senary, background);
+  border-radius: 0.16rem;
+  &:not(.no-card-padding) {
+    padding: calc(var(--gutter, 0.5rem) * 2);
+  }
+  &:not(.not-shadowed-card) {
+    box-shadow: 0 0.23rem 1.3rem 0.16rem rgba(46, 34, 34, 0.08);
+  }
+  &.hoverable-card {
+    &:hover {
+      filter: brightness(1.1);
+      cursor: pointer;
+    }
+  }
+}
+
+.secondary-card {
+  border: 0.06rem solid theme.get-theme-value(theme, septenary, border);
+  background: theme.get-theme-value(theme, septenary, background);
+  box-shadow: 0 0.23rem 1.3rem 0.16rem rgba(0, 0, 0, 0.08);
+  border-radius: 0.16rem;
+  position: relative;
+  & .card-title-style {
+    padding: calc(var(--gutter, 0.5rem) * 1) calc(var(--gutter, 0.5rem) * 2);
+    color: theme.get-theme-value(theme, septenary, color);
+    font-size: 0.86rem;
+    font-weight: 700;
+  }
+  & .card-body-style {
+    color: theme.get-theme-value(theme, septenary, color);
+    font-weight: lighter;
+    font-size: 0.86rem;
+  }
+  & .card-sparkline-style {
+    height: 3rem;
+    width: 100%;
+  }
+  & .floating-button-style {
+    @include mixins.generate-compatible-properties(transform, translateY(50%), webkit, ms);
+    color: theme.get-theme-value(theme, secondary, background);
+    background: theme.get-theme-value(theme, primary, color);
+    transition: all 0.5s ease;
+    border-radius: 50%;
+    position: absolute;
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 0.36rem;
+    right: 0.66rem;
+    bottom: 0;
+    &:active,
+    &:hover,
+    &:focus {
+      background: theme.get-theme-value(theme, senary, color);
+      color: theme.get-theme-value(theme, senary, background);
+    }
+  }
+}
+
+.tertiary-card {
+  transition: all 0.25s linear;
+  border-radius: 0.16rem;
+  position: relative;
+  & img {
+    display: block;
+    width: 100%;
+  }
+  & .card-content {
+    padding: calc(var(--gutter, 0.5rem) * 2);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  &.hoverable-card {
+    &:hover {
+      @include mixins.generate-compatible-properties(transform, scale(1.02), webkit, ms);
+      filter: brightness(1.1);
+      cursor: pointer;
+    }
+  }
+}
+
+.quaternary-card {
+  border: 0.06rem solid theme.get-theme-value(theme, septenary, border);
+  background: theme.get-theme-value(theme, senary, background);
+  flex-direction: column;
+  display: flex;
+  & > :nth-child(1),
+  & {
+    border-top-right-radius: 0.86rem;
+  }
+  &:not(.no-card-padding) > :nth-child(2) {
+    padding: calc(var(--gutter, 0.5rem) * 2);
+    flex-direction: column;
+    display: flex;
+    height: 100%;
+  }
+}
+
+.quinary-card {
+  align-items: flex-start;
+  display: flex;
+  &:not(.no-card-padding) {
+    padding: 0.66rem;
+  }
+  &.hoverable-card {
+    & .card-icon-section {
+      cursor: pointer;
+      &:hover::after {
+        filter: brightness(0.85);
+      }
+    }
+  }
+  &.selectable-card {
+    position: relative;
+    cursor: pointer;
+    &.active-card,
+    &:focus,
+    &:hover {
+      &::after {
+        background: var(--selected-background, theme.get-theme-value(palette, secondary, background));
+      }
+      & .card-icon-section::after {
+        background: var(--selected-color, var(--selected-background));
+      }
+      & .card-main-section {
+        color: var(--selected-color);
+      }
+    }
+    &::after {
+      filter: brightness(0.7);
+      position: absolute;
+      height: 100%;
+      content: "";
+      width: 100%;
+      left: 0;
+      top: 0;
+    }
+    & > * {
+      position: relative;
+      z-index: 1;
+    }
+    &:not(.active-card):not(:focus):not(:hover) {
+      & .card-icon-section::after {
+        background: var(--selected-background);
+      }
+    }
+  }
+  &.bordered-card {
+    border-color: theme.get-theme-value(theme, septenary, border);
+    border-radius: 0.24rem;
+    border-width: 0.06rem;
+    border-style: solid;
+    &.selectable-card {
+      &.active-card,
+      &:hover {
+        border-color: var(--selected-background, theme.get-theme-value(palette, secondary, background));
+      }
+    }
+  }
+  &.curved-card {
+    border-radius: 0.24rem;
+  }
+  & .card-icon-section {
+    color: theme.get-theme-value(theme, primary, color);
+    margin-right: 0.5rem;
+    position: relative;
+    padding: 0.5rem;
+    & svg {
+      width: 1rem;
+      height: 1rem;
+      & image {
+        width: 1rem;
+      }
+    }
+    &::after {
+      border-radius: 0.24rem;
+      position: absolute;
+      opacity: 0.7;
+      height: 100%;
+      content: "";
+      width: 100%;
+      left: 0;
+      top: 0;
+    }
+    & img {
+      filter: contrast(0) brightness(2);
+      position: relative;
+      display: block;
+      height: 1rem;
+      width: 1rem;
+      z-index: 1;
+    }
+    & > :not(img):first-child {
+      position: relative;
+      font-size: 1rem;
+      display: block;
+      z-index: 1;
+    }
+  }
+  &:not(.selectable-card) {
+    & .card-icon-section::after {
+      background: var(--selected-background);
+    }
+  }
+  & .card-main-section {
+    width: 100%;
+  }
+}

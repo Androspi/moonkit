@@ -1,0 +1,114 @@
+@use "../_theme";
+
+.primary-table {
+  margin-right: auto;
+  border-spacing: 0;
+  margin-left: auto;
+  & thead {
+    & th {
+      font-weight: 500;
+    }
+    & th,
+    & td {
+      &:not(.not-bordered) {
+        border-bottom: 1px solid theme.get-theme-value(palette, primary, background);
+      }
+    }
+  }
+  & tbody:not(.no-striped) {
+    & tr:nth-child(even) {
+      background: #ffffff0a;
+    }
+  }
+  & th {
+    color: theme.get-theme-value(palette, primary, color);
+  }
+  & td {
+    color: theme.get-theme-value(theme, quaternary, color);
+  }
+  & td,
+  & th {
+    &:not(.allow-multiple-line) {
+      white-space: nowrap;
+    }
+    & i {
+      vertical-align: sub;
+      font-size: 1rem;
+    }
+    font-size: 0.63rem;
+    padding: 0.5em;
+  }
+}
+
+.secondary-table {
+  margin-right: auto;
+  border-spacing: 0;
+  margin-left: auto;
+  & thead.sticky-thead {
+    & tr:first-child {
+      & th,
+      & td {
+        background: theme.get-theme-value(palette, nonary, background);
+        position: sticky;
+        z-index: 1;
+        top: 0;
+      }
+    }
+  }
+  & tfoot.sticky-tfoot {
+    & tr:last-child {
+      & th,
+      & td {
+        background: theme.get-theme-value(palette, nonary, background);
+        position: sticky;
+        z-index: 1;
+        bottom: 0;
+      }
+    }
+  }
+  & tbody:not(.no-striped) {
+    & tr:nth-child(odd) {
+      background: theme.get-theme-value(theme, secondary, background);
+    }
+  }
+  & thead,
+  & tfoot {
+    & tr {
+      background: theme.get-theme-value(palette, nonary, background);
+    }
+  }
+  & thead {
+    & :first-child :first-child {
+      border-top-left-radius: 0.26rem;
+    }
+    & :first-child :last-child {
+      border-top-right-radius: 0.26rem;
+    }
+    & tr {
+      text-align: left;
+    }
+  }
+  & tfoot {
+    & :last-child :first-child {
+      border-bottom-left-radius: 0.26rem;
+    }
+    & :last-child :last-child {
+      border-bottom-right-radius: 0.26rem;
+    }
+  }
+  & th {
+    color: theme.get-theme-value(palette, primary, color);
+    font-size: 0.6rem;
+  }
+  & td {
+    color: theme.get-theme-value(theme, septenary, color);
+    font-size: 0.63rem;
+  }
+  & td,
+  & th {
+    &:not(.allow-multiple-line) {
+      white-space: nowrap;
+    }
+    padding: 1em 1.5em;
+  }
+}

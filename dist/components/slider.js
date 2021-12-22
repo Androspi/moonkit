@@ -93,7 +93,7 @@ export class Slider {
                 item.currentChildrenShown[0].target.classList.add(slideRightName);
             }
             const updateHeight = () => {
-                if (Array.from(item.currentChildrenShown[0].target.querySelectorAll('img')).every(elm => elm.complete && elm.naturalHeight)) {
+                if (Array.from(item.currentChildrenShown[0].target.querySelectorAll('img')).every((elm) => elm.complete && elm.naturalHeight)) {
                     this.sliderTemplate.styles = { height: `${item.currentChildrenShown[0].target.offsetHeight}px` };
                 }
                 else {

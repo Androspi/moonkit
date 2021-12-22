@@ -1,0 +1,51 @@
+@use "../_theme";
+@use 'sass:math';
+
+$type: rem !default;
+$measure: 16 !default;
+@if ($type == px) {
+  $measure: 1;
+}
+
+[tooltip-trigger] {
+  cursor: pointer;
+}
+
+$distance: calc(50% - #{math.div(7.5, $measure) + $type});
+
+.primary-tooltip {
+  border: #{math.div(1, $measure) + $type} solid theme.get-theme-value(theme, septenary, border);
+  background: theme.get-theme-value(theme, senary, background);
+  color: theme.get-theme-value(theme, septenary, color);
+  border-radius: #{math.div(4, $measure) + $type};
+  font-size: #{math.div(12, $measure) + $type};
+  padding: #{math.div(6, $measure) + $type};
+  position: absolute;
+  z-index: 6;
+  &[tooltip-border-direction]::after {
+    border-width: #{math.div(7.5, $measure) + $type};
+    border-style: solid;
+    position: absolute;
+    content: "";
+  }
+  &[tooltip-border-direction="bottom"]::after {
+    border-color: transparent transparent theme.get-theme-value(theme, septenary, border) transparent;
+    left: #{$distance};
+    bottom: 100%;
+  }
+  &[tooltip-border-direction="right"]::after {
+    border-color: transparent theme.get-theme-value(theme, septenary, border) transparent transparent;
+    bottom: #{$distance};
+    right: 100%;
+  }
+  &[tooltip-border-direction="left"]::after {
+    border-color: transparent transparent transparent theme.get-theme-value(theme, septenary, border);
+    bottom: #{$distance};
+    left: 100%;
+  }
+  &[tooltip-border-direction="top"]::after {
+    border-color: theme.get-theme-value(theme, septenary, border) transparent transparent transparent;
+    left: #{$distance};
+    top: 100%;
+  }
+}
